@@ -10,9 +10,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 * auth.php
 * auth_model.php
+* rumah_sakit.php
+* rumah_sakit_model.php
 * add register() and login_auth() at auth_model.php
 * add login() at auth.php
 * add send_register() at auth.php
+* add function get_data_rumah_sakit() at rumah_sakit_model.php
 
 ### Changed
 * database
