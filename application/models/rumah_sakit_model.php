@@ -13,7 +13,7 @@ class rumah_sakit_model extends CI_Model {
     public function get_data_rumah_sakit_by_id($id)
     {
         return $this->db->where('id_RS', $id)
-                        ->get()->row();
+                        ->get('tb_rs')->row();
     }
 
     public function add_hospital($file)
