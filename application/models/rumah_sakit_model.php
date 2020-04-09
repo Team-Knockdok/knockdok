@@ -34,6 +34,19 @@ class rumah_sakit_model extends CI_Model {
         }
     }
 
+    public function delete_hospital($id)
+    {
+        $data = array('delete_status' => 'true');
+
+        $this->db->where('id_rs', $id)->update('tb_rs', $data);
+
+        if ($this->db->affected_rows() > 0) {
+            return TRUE;
+        } else {
+            return FALSE;
+        }
+    }
+
 }
 
 /* End of file rumah_sakit_model.php */

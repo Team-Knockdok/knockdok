@@ -57,10 +57,17 @@ class rumah_sakit extends CI_Controller {
             $this->session->set_flashdata('failed', validation_errors());
             redirect('');
         }
-        
-        
+    }
 
-        
+    public function delete_data_RS($id_rs)
+    {
+        if ($this->rumah_sakit_model->delete_hospital($id) == TRUE) {
+            $this->session->set_flashdata('success', 'Hapus data rumah sakit berhasil!');
+            redirect('');
+        } else {
+            $this->session->set_flashdata('failed', 'Hapus data gagal! Silahkan coba lagi');
+            redirect('');
+        }
         
     }
 

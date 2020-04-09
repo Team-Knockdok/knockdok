@@ -19,6 +19,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * add function get_data_rumah_sakit_by_id() at rumah_sakit_model.php
 * add function insert_data_RS() at rumah_sakit.php
 * add function add_hospital() at rumah_sakit_model.php
+* add function delete_hospital() at rumah_sakit_model.php
+* add function delete_data_RS() at rumah_sakit_model.php
 
 ### Changed
 * database
