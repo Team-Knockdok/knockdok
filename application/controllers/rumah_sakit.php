@@ -19,6 +19,51 @@ class rumah_sakit extends CI_Controller {
         $this->load->view('View File', $data);
     }
 
+    public function insert_data_RS()
+    {
+        // FORM VALIDATION CONFIGURATION
+        $this->form_validation->set_rules('nama_rs', 'Nama Rumah Sakit', 'required|min_length[5]|max_length[30]');
+        $this->form_validation->set_rules('alamat', 'Alamat Rumah Sakit', 'required|min_length[10]|max_length[100]');
+        $this->form_validation->set_rules('nomor_telepon_rs', 'Nomor Telepon Rumah Sakit', 'required|max_length[12]');
+        $this->form_validation->set_rules('gambar_rs', 'Gambar Rumah Sakit', 'required|max_length[30]');
+        // END FORM VALIDATION CONFIGURATION
+        
+        if ($this->form_validation->run() == TRUE) {
+
+            // UPLOAD CONFIGURATION
+            $path = './uploads/rumah_sakit/';
+            $config['upload_path'] = $path;
+            $config['allowed_types'] = 'jpg|png';
+            $config['max_size']  = '10000';
+            
+            $this->load->library('upload', $config);
+            // END UPLOAD CONFIGURATION
+
+            if ($this->upload->do_upload($this->input->post('gambar_rs')) == TRUE){
+                if ($this->rumah_sakit_model->add_hospital($this->upload->data()) == TRUE) {
+                    $this->session->set_flashdata('success', 'tambah data rumah sakit berhasil!');
+                    redirect('');
+                } else {
+                    unlink($path.$this->upload->data());
+                    $this->session->set_flashdata('failed', 'tambah data rumah sakit gagal! Silahkan coba lagi');
+                    redirect('');
+                }
+            }
+            else{
+                $this->session->set_flashdata('failed', $this->upload->display_errors());
+                redirect('');
+            }
+        } else {
+            $this->session->set_flashdata('failed', validation_errors());
+            redirect('');
+        }
+        
+        
+
+        
+        
+    }
+
 }
 
 /* End of file rumah_sakit.php */

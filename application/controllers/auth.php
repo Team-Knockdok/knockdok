@@ -31,6 +31,7 @@ class Auth extends CI_Controller {
 		$this->form_validation->set_rules('alamat', 'Alamat', 'required|min_length[10]|max_length[100]');
 		$this->form_validation->set_rules('email', 'Email', 'required|max_length[35]|valid_email');
 		$this->form_validation->set_rules('nomor_telepon', 'Nomor telepon', 'required|min_length[12]|max_length[12]');
+		$this->form_validation->set_rules('user_image', 'Foto profil', 'required|max_length[40]');
 		// END FORM VALIDATION
 
 		// if inputed password is same with re-password
@@ -40,7 +41,8 @@ class Auth extends CI_Controller {
 			if ($this->form_validation->run() == TRUE) {
 
 				// UPLOAD CONFIGURATION
-				$config['upload_path'] = './uploads/users';
+				$path = './uploads/users/';
+				$config['upload_path'] = $path;
 				$config['allowed_types'] = 'jpg|png';
 				$config['max_size']  = '10000';
 				
@@ -60,6 +62,7 @@ class Auth extends CI_Controller {
 					}
 
 				} else{
+					unlink($path.$this->upload->data()); // remove uploaded file cuz at register() function error
 					$this->session->set_flashdata('failed', $this->upload->display_errors());
 					redirect('auth/register');
 				}	

@@ -16,6 +16,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * add login() at auth.php
 * add send_register() at auth.php
 * add function get_data_rumah_sakit() at rumah_sakit_model.php
+* add function get_data_rumah_sakit_by_id() at rumah_sakit_model.php
+* add function insert_data_RS() at rumah_sakit.php
+* add function add_hospital() at rumah_sakit_model.php
 
 ### Changed
 * database
