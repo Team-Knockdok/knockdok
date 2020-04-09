@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class auth_model extends CI_Model {
 
-    public function register()
+    public function register($file)
     {
         $data = array(
             'nama_depan' => $this->input->post('nama_depan'),
@@ -13,7 +13,8 @@ class auth_model extends CI_Model {
             'password' => $this->input->post('password'), 
             'alamat' => $this->input->post('alamat'), 
             'email' => $this->input->post('email'), 
-            'nomor_telepon' => $this->input->post('nomor_telepon') 
+            'nomor_telepon' => $this->input->post('nomor_telepon'),
+            'foto_profil' => $file
         );
 
         $this->db->insert('tb_user', $data);

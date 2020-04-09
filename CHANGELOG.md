@@ -12,9 +12,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * auth_model.php
 * add register() and login_auth() at auth_model.php
 * add login() at auth.php
+* add send_register() at auth.php
 
 ### Changed
 * database
+* change function register() at auth_model.php by adding parameter $file and adding more key and value at array in register() function
 
 ## [0.0.2] - 2020-04-09
 
