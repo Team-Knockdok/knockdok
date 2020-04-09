@@ -29,17 +29,30 @@ class auth_model extends CI_Model {
 
     public function login_auth()
     {
-        // $username = $this->input->post('username');
-        // $password = $this->input->post('password');
+        $username = $this->input->post('username');
+        $password = $this->input->post('password');
 
-        // $query = $this->db->where('username', $username)
-        //                     ->where('password', $password)
-        //                     ;
-        
-        
-        
+        $query = $this->db->where('username', $username)
+                            ->where('password', $password)
+                            ->get('tb_user');
+
+        if ($this->db->affected_rows() > 0) {
+            $data = $query->row_array();
+
+            
+            $session = array(
+                'logged_in' => 'true',
+                'nama_user' => $data['nama_depan'].' '.$data['nama_belakang'],
+                'foto_profil' => $data['foto_profil']
+            );
+            
+            $this->session->set_userdata( $session );
+
+            return TRUE;
+        } else {
+            return FALSE;
+        }
     }
-
 }
 
 /* End of file auth_model.php */

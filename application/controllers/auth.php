@@ -13,7 +13,7 @@ class Auth extends CI_Controller {
 
 	public function index()
 	{
-		
+		$this->load->view('View File', $data);
 	}
 
 	public function send_register()
@@ -22,6 +22,19 @@ class Auth extends CI_Controller {
 			
 		} else {
 			# code...
+		}
+		
+	}
+
+	public function login()
+	{
+		if ($this->auth_model->login_auth() == TRUE) {
+			$this->session->set_flashdata('success', 'Login Berhasil! Welcome '.$this->session->userdata('nama_user');
+			);
+			redirect('');
+		} else {
+			$this->session->set_flashdata('failed', 'Login Gagal! Silahkan Coba Lagi');
+			redirect('index');
 		}
 		
 	}

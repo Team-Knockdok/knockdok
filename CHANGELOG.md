@@ -8,8 +8,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-* auth
-* auth_model
+* auth.php
+* auth_model.php
+* add register() and login_auth() at auth_model.php
+* add login() at auth.php
 
 ### Changed
 * database
