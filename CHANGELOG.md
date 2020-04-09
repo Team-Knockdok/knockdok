@@ -23,6 +23,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 * database
 * change function register() at auth_model.php by adding parameter $file and adding more key and value at array in register() function
+* fixing env configuration for database
 
 ## [0.0.2] - 2020-04-09
 
