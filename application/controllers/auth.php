@@ -13,12 +13,14 @@ class Auth extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('View File', $data);
+		$data['main_view'] = 'login_view';
+		$this->load->view('template', $data);
 	}
 
 	public function register()
 	{
-		$this->load->view('View File', $data);
+		$data['main_view'] = 'register_view';
+		$this->load->view('template', $data);
 	}
 
 	public function send_register()
@@ -28,6 +30,7 @@ class Auth extends CI_Controller {
 		$this->form_validation->set_rules('nama_belakang', 'Nama belakang', 'required|max_length[15]');
 		$this->form_validation->set_rules('username', 'Username', 'required|min_length[5]|max_length[20]|is_unique[tb_user.username]');
 		$this->form_validation->set_rules('password', 'Password', 'required|min_length[5]|max_length[30]');
+		$this->form_validation->set_rules('re_password', 'Password', 'required|min_length[5]|max_length[30]');
 		$this->form_validation->set_rules('alamat', 'Alamat', 'required|min_length[10]|max_length[100]');
 		$this->form_validation->set_rules('email', 'Email', 'required|max_length[35]|valid_email');
 		$this->form_validation->set_rules('nomor_telepon', 'Nomor telepon', 'required|min_length[12]|max_length[12]');
@@ -40,15 +43,17 @@ class Auth extends CI_Controller {
 			if ($this->form_validation->run() == TRUE) {
 
 				// UPLOAD CONFIGURATION
-				$config['upload_path'] = './uploads/users';
+				$path = './uploads/users/';
+				$config['upload_path'] = $path;
 				$config['allowed_types'] = 'jpg|png';
 				$config['max_size']  = '10000';
 				
-				$this->load->library('upload', $config);
+				$this->load->library('upload');
+				$this->upload->initialize($config);
 				// END UPLOAD CONFIGURATION
 				
 				// if doing upload file is success
-				if ($this->upload->do_upload($this->input->post('user_image')) == TRUE){
+				if ($this->upload->do_upload('user_image')){
 
 					// if function register() at auth_model return TRUE
 					if ($this->auth_model->register($this->upload->data()) == TRUE) {
@@ -60,6 +65,7 @@ class Auth extends CI_Controller {
 					}
 
 				} else{
+					unlink($path.$this->upload->data()); // remove uploaded file cuz at register() function error
 					$this->session->set_flashdata('failed', $this->upload->display_errors());
 					redirect('auth/register');
 				}	
@@ -77,21 +83,25 @@ class Auth extends CI_Controller {
 
 	public function login()
 	{
-		if ($this->auth_model->login_auth() == TRUE) {
-			$this->session->set_flashdata('success', 'Login Berhasil! Welcome '.$this->session->userdata('nama_user');
-			);
-			redirect('');
+		if ($this->session->userdata('logged_in') == TRUE) {
+			// redirect('');
+			echo 'lu udah login cuy';
 		} else {
-			$this->session->set_flashdata('failed', 'Login Gagal! Silahkan Coba Lagi');
-			redirect('auth');
+			if ($this->auth_model->login_auth() == TRUE) {
+				// $this->session->set_flashdata('success', 'Login Berhasil! Selamat Datang '.$this->session->userdata('nama_user'));
+				// redirect('');
+				echo 'Login Berhasil! Selamat Datang '.$this->session->userdata('nama_user');
+			} else {
+				$this->session->set_flashdata('failed', 'Login Gagal! Silahkan Coba Lagi');
+				redirect('auth');
+			}	
 		}
-		
 	}
 
 	public function logout()
 	{
 		$this->session->sess_destroy();
-		redirect('');
+		redirect('auth');
 	}
 
 }

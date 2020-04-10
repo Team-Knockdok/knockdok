@@ -312,4 +312,8 @@ switch (ENVIRONMENT)
  *
  * And away we go...
  */
+require_once BASEPATH . '/dotenv/autoloader.php';
+$dotenv = new Dotenv\Dotenv(FCPATH);
+$dotenv->load();
+
 require_once BASEPATH.'core/CodeIgniter.php';

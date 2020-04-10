@@ -1,10 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-require_once base_url() . 'system/dotenv/autoloader.php';
-$dotenv = new Dotenv\Dotenv(FCPATH);
-$dotenv->load();
-
 /*
 | -------------------------------------------------------------------
 | DATABASE CONNECTIVITY SETTINGS
