@@ -82,20 +82,25 @@ class Auth extends CI_Controller {
 
 	public function login()
 	{
-		if ($this->auth_model->login_auth() == TRUE) {
-			$this->session->set_flashdata('success', 'Login Berhasil! Welcome '.$this->session->userdata('nama_user'));
-			redirect('');
+		if ($this->session->userdata('logged_in') == TRUE) {
+			// redirect('');
+			echo 'lu udah login cuy';
 		} else {
-			$this->session->set_flashdata('failed', 'Login Gagal! Silahkan Coba Lagi');
-			redirect('auth');
+			if ($this->auth_model->login_auth() == TRUE) {
+				// $this->session->set_flashdata('success', 'Login Berhasil! Selamat Datang '.$this->session->userdata('nama_user'));
+				// redirect('');
+				echo 'Login Berhasil! Selamat Datang '.$this->session->userdata('nama_user');
+			} else {
+				$this->session->set_flashdata('failed', 'Login Gagal! Silahkan Coba Lagi');
+				redirect('auth');
+			}	
 		}
-		
 	}
 
 	public function logout()
 	{
 		$this->session->sess_destroy();
-		redirect('');
+		redirect('auth');
 	}
 
 }

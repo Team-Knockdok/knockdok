@@ -10,6 +10,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 * register_view.php
 * template.php
+* login_view.php
+
+### changed
+* add library session at autoload.php
+* add route action at form login
+* add notification label at template.php
+* add input type file in register_view.php
 
 ## [Unreleased] - 2020-04-09
 

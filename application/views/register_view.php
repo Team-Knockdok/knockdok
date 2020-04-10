@@ -3,7 +3,6 @@
         <div id="login-box" class="col-md-12">
             <form id="login-form" class="form" action="" method="post">
                 <h3 class="text-center text-info" id="register">Register</h3>
-
                 <table>
                     <tr>
                         <td>
@@ -22,7 +21,6 @@
                         </td>
                     </tr>
                 </table>
-
                 <div class="form-group">
                     <label class="text-info">Username</label>
                     <br>
@@ -52,6 +50,11 @@
                     <label class="text-info">No. Telepon</label>
                     <br>
                     <input type="text" id="notelp" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label class="text-info">Foto Profil</label>
+                    <br>
+                    <input type="file" id="notelp" class="form-control">
                 </div>
                 <div class="form-group" id="btnsubmit">
                     <br>
