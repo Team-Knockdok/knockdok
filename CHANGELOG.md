@@ -8,6 +8,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+* register_view.php
+* template.php
+
+## [Unreleased] - 2020-04-09
+
+### Added
 * auth.php
 * auth_model.php
 * rumah_sakit.php

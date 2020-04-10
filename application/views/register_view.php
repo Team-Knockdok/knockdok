@@ -53,7 +53,6 @@
                     <br>
                     <input type="text" id="notelp" class="form-control">
                 </div>
-
                 <div class="form-group" id="btnsubmit">
                     <br>
                     <input type="submit" name="submit" class="btn btn-info btn-md" value="submit">

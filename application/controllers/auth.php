@@ -19,8 +19,8 @@ class Auth extends CI_Controller {
 
 	public function register()
 	{
-		$data['main_view'] = '';
-		$this->load->view('View File', $data);
+		$data['main_view'] = 'register_view';
+		$this->load->view('template', $data);
 	}
 
 	public function send_register()
