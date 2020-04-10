@@ -17,6 +17,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * add route action at form login
 * add notification label at template.php
 * add input type file in register_view.php
+* add library session and form_validation at autoload.php
+* add name at input form in register_view.php
+* fixing send_register() at auth.php
 
 ## [Unreleased] - 2020-04-09
 

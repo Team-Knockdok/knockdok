@@ -30,10 +30,10 @@ class Auth extends CI_Controller {
 		$this->form_validation->set_rules('nama_belakang', 'Nama belakang', 'required|max_length[15]');
 		$this->form_validation->set_rules('username', 'Username', 'required|min_length[5]|max_length[20]|is_unique[tb_user.username]');
 		$this->form_validation->set_rules('password', 'Password', 'required|min_length[5]|max_length[30]');
+		$this->form_validation->set_rules('re_password', 'Password', 'required|min_length[5]|max_length[30]');
 		$this->form_validation->set_rules('alamat', 'Alamat', 'required|min_length[10]|max_length[100]');
 		$this->form_validation->set_rules('email', 'Email', 'required|max_length[35]|valid_email');
 		$this->form_validation->set_rules('nomor_telepon', 'Nomor telepon', 'required|min_length[12]|max_length[12]');
-		$this->form_validation->set_rules('user_image', 'Foto profil', 'required|max_length[40]');
 		// END FORM VALIDATION
 
 		// if inputed password is same with re-password
@@ -48,11 +48,12 @@ class Auth extends CI_Controller {
 				$config['allowed_types'] = 'jpg|png';
 				$config['max_size']  = '10000';
 				
-				$this->load->library('upload', $config);
+				$this->load->library('upload');
+				$this->upload->initialize($config);
 				// END UPLOAD CONFIGURATION
 				
 				// if doing upload file is success
-				if ($this->upload->do_upload($this->input->post('user_image')) == TRUE){
+				if ($this->upload->do_upload('user_image')){
 
 					// if function register() at auth_model return TRUE
 					if ($this->auth_model->register($this->upload->data()) == TRUE) {
