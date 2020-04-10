@@ -10,22 +10,17 @@ class auth_model extends CI_Model {
             'nama_depan' => $this->input->post('nama_depan'),
             'nama_belakang' => $this->input->post('nama_belakang'),
             'username' => $this->input->post('username'),
-            'password' => $this->input->post('password'), 
-            'alamat' => $this->input->post('alamat'), 
-            'email' => $this->input->post('email'), 
+            'password' => $this->input->post('password'),
+            'alamat' => $this->input->post('alamat'),
+            'email' => $this->input->post('email'),
             'nomor_telepon' => $this->input->post('nomor_telepon'),
             'foto_profil' => $file
         );
 
         $this->db->insert('tb_user', $data);
 
-        if ($this->db->affected_rows() > 0) {
-            return TRUE;
-        } else {
-            return FALSE;
-        }
-        
-        
+        return ($this->db->affected_rows() > 0);
+
     }
 
     public function login_auth()
@@ -40,13 +35,13 @@ class auth_model extends CI_Model {
         if ($this->db->affected_rows() > 0) {
             $data = $query->row_array();
 
-            
+
             $session = array(
                 'logged_in' => 'true',
                 'nama_user' => $data['nama_depan'].' '.$data['nama_belakang'],
                 'foto_profil' => $data['foto_profil']
             );
-            
+
             $this->session->set_userdata( $session );
 
             return TRUE;
