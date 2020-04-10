@@ -4,13 +4,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class rumah_sakit extends CI_Controller {
 
-    
+
     public function __construct()
     {
         parent::__construct();
         $this->load->model('rumah_sakit_model');
     }
-    
+
 
     public function index()
     {
@@ -27,7 +27,7 @@ class rumah_sakit extends CI_Controller {
         $this->form_validation->set_rules('nomor_telepon_rs', 'Nomor Telepon Rumah Sakit', 'required|max_length[12]');
         $this->form_validation->set_rules('gambar_rs', 'Gambar Rumah Sakit', 'required|max_length[30]');
         // END FORM VALIDATION CONFIGURATION
-        
+
         if ($this->form_validation->run() == TRUE) {
 
             // UPLOAD CONFIGURATION
@@ -35,7 +35,7 @@ class rumah_sakit extends CI_Controller {
             $config['upload_path'] = $path;
             $config['allowed_types'] = 'jpg|png';
             $config['max_size']  = '10000';
-            
+
             $this->load->library('upload', $config);
             // END UPLOAD CONFIGURATION
 
@@ -61,14 +61,14 @@ class rumah_sakit extends CI_Controller {
 
     public function delete_data_RS($id_rs)
     {
-        if ($this->rumah_sakit_model->delete_hospital($id) == TRUE) {
+        if ($this->rumah_sakit_model->delete_hospital($id_rs) == TRUE) {
             $this->session->set_flashdata('success', 'Hapus data rumah sakit berhasil!');
             redirect('');
         } else {
             $this->session->set_flashdata('failed', 'Hapus data gagal! Silahkan coba lagi');
             redirect('');
         }
-        
+
     }
 
 }
