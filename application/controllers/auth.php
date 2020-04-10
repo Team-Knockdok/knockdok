@@ -3,13 +3,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Auth extends CI_Controller {
 
-	
+
 	public function __construct()
 	{
 		parent::__construct();
 		$this->load->model('auth_model');
 	}
-	
+
 
 	public function index()
 	{
@@ -43,20 +43,22 @@ class Auth extends CI_Controller {
 			if ($this->form_validation->run() == TRUE) {
 
 				// UPLOAD CONFIGURATION
-				$path = './uploads/users/';
+				$path = './uploads/users';
 				$config['upload_path'] = $path;
 				$config['allowed_types'] = 'jpg|png';
 				$config['max_size']  = '10000';
-				
+
 				$this->load->library('upload');
 				$this->upload->initialize($config);
 				// END UPLOAD CONFIGURATION
-				
+
 				// if doing upload file is success
 				if ($this->upload->do_upload('user_image')){
 
 					// if function register() at auth_model return TRUE
-					if ($this->auth_model->register($this->upload->data()) == TRUE) {
+					$filename = $this->upload->data('file_name');
+
+					if ($this->auth_model->register($filename) == TRUE) {
 						$this->session->set_flashdata('success', 'Registrasi Berhasil!');
 						redirect('auth');
 					} else {
@@ -68,12 +70,12 @@ class Auth extends CI_Controller {
 					unlink($path.$this->upload->data()); // remove uploaded file cuz at register() function error
 					$this->session->set_flashdata('failed', $this->upload->display_errors());
 					redirect('auth/register');
-				}	
+				}
 
 			} else {
 				$this->session->set_flashdata('failed', validation_errors());
 				redirect('auth/register');
-			}	
+			}
 
 		} else {
 			$this->session->set_flashdata('failed', 'Password yang diinputkan tidak sama! Silahkan coba lagi');
@@ -94,7 +96,7 @@ class Auth extends CI_Controller {
 			} else {
 				$this->session->set_flashdata('failed', 'Login Gagal! Silahkan Coba Lagi');
 				redirect('auth');
-			}	
+			}
 		}
 	}
 
