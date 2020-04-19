@@ -39,6 +39,7 @@ class auth_model extends CI_Model {
             $session = array(
                 'logged_in' => 'true',
                 'nama_user' => $data['nama_depan'].' '.$data['nama_belakang'],
+                'username' => $data['username'],
                 'foto_profil' => $data['foto_profil']
             );
 
