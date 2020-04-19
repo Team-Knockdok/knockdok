@@ -10,20 +10,21 @@
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark" id="navibar">
-        <a class="navbar-brand" href="#">KnockDoc</a>
+        <a class="navbar-brand" href="<?= base_url() ?>home">KnockDoc</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Beranda <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="<?= base_url() ?>home">Beranda <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#dokter" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Cari Dokter?</a>
                     <div id="dokter" class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Profil Dokter</a>
-                        <a class="dropdown-item" href="#">Profil Rumah Sakit</a>
+                        <a class="dropdown-item" href="#">Pesan</a>
+                        <a class="dropdown-item" href="#">Data Dokter</a>
+                        <a class="dropdown-item" href="#">Data Rumah Sakit</a>
                     </div>
                 </li>
                 <?php 
@@ -37,7 +38,7 @@
                             <div class="dropdown-menu" id="akun" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="#">Profil</a>
                                 <a class="dropdown-item" href="#">Riwayat</a>
-                                <a class="dropdown-item" href="#">Bantuan</a>
+                                <a class="dropdown-item" href="'.base_url().'home/bantuan">Bantuan</a>
                                 <a class="dropdown-item" href="'.base_url().'auth/logout">Logout</a>
                             </div>
                         </li>
