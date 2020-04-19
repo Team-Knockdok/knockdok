@@ -22,12 +22,11 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#dokter" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Cari Dokter?</a>
                     <div id="dokter" class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Pesan</a>
-                        <a class="dropdown-item" href="#">Data Dokter</a>
-                        <a class="dropdown-item" href="<?= base_url() ?>rumah_sakit">Data Rumah Sakit</a>
+                        <a class="dropdown-item" href="<?= base_url() ?>dokter">Cari Dokter</a>
+                        <a class="dropdown-item" href="<?= base_url() ?>rumah_sakit">Cari Rumah Sakit</a>
                     </div>
                 </li>
-                <?php 
+                <?php
                     if ($this->session->userdata('logged_in') == TRUE) {
                         echo '
                         <li class="nav-item">
@@ -50,9 +49,9 @@
                         </li>
                         ';
                     }
-                    
+
                 ?>
-                
+
             </ul>
         </div>
     </nav>
@@ -83,7 +82,7 @@
         ?>
         <?php $this->load->view($main_view); ?>
     </div>
-    
+
 </body>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
