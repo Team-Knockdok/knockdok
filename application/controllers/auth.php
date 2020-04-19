@@ -3,24 +3,34 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Auth extends CI_Controller {
 
-
+	
 	public function __construct()
 	{
 		parent::__construct();
 		$this->load->model('auth_model');
 	}
-
+	
 
 	public function index()
 	{
-		$data['main_view'] = 'login_view';
-		$this->load->view('template', $data);
+		if ($this->session->userdata('logged_in') == TRUE) {
+			$this->session->set_flashdata('failed', 'Anda sudah Login! <b>'.$this->session->userdata('nama_user').'</b>');
+			redirect('home');
+		} else {
+			$data['main_view'] = 'login_view';
+			$this->load->view('template', $data);
+		}
 	}
 
 	public function register()
 	{
-		$data['main_view'] = 'register_view';
-		$this->load->view('template', $data);
+		if ($this->session->userdata('logged_in') == TRUE) {
+			$this->session->set_flashdata('failed', 'Anda harus Logout terlebih dahulu!');
+			redirect('home');
+		} else {
+			$data['main_view'] = 'register_view';
+			$this->load->view('template', $data);	
+		}
 	}
 
 	public function send_register()
@@ -43,22 +53,20 @@ class Auth extends CI_Controller {
 			if ($this->form_validation->run() == TRUE) {
 
 				// UPLOAD CONFIGURATION
-				$path = './uploads/users';
+				$path = './uploads/users/';
 				$config['upload_path'] = $path;
 				$config['allowed_types'] = 'jpg|png';
 				$config['max_size']  = '10000';
-
+				
 				$this->load->library('upload');
 				$this->upload->initialize($config);
 				// END UPLOAD CONFIGURATION
-
+				
 				// if doing upload file is success
 				if ($this->upload->do_upload('user_image')){
 
 					// if function register() at auth_model return TRUE
-					$filename = $this->upload->data('file_name');
-
-					if ($this->auth_model->register($filename) == TRUE) {
+					if ($this->auth_model->register('user_image') == TRUE) {
 						$this->session->set_flashdata('success', 'Registrasi Berhasil!');
 						redirect('auth');
 					} else {
@@ -70,12 +78,12 @@ class Auth extends CI_Controller {
 					unlink($path.$this->upload->data()); // remove uploaded file cuz at register() function error
 					$this->session->set_flashdata('failed', $this->upload->display_errors());
 					redirect('auth/register');
-				}
+				}	
 
 			} else {
 				$this->session->set_flashdata('failed', validation_errors());
 				redirect('auth/register');
-			}
+			}	
 
 		} else {
 			$this->session->set_flashdata('failed', 'Password yang diinputkan tidak sama! Silahkan coba lagi');
@@ -86,17 +94,18 @@ class Auth extends CI_Controller {
 	public function login()
 	{
 		if ($this->session->userdata('logged_in') == TRUE) {
-			// redirect('');
-			echo 'lu udah login cuy';
+			$this->session->set_flashdata('failed', 'Anda sudah Login! <b>'.$this->session->userdata('nama_user').'</b>');
+			redirect('home');
+			
 		} else {
 			if ($this->auth_model->login_auth() == TRUE) {
-				// $this->session->set_flashdata('success', 'Login Berhasil! Selamat Datang '.$this->session->userdata('nama_user'));
-				// redirect('');
-				echo 'Login Berhasil! Selamat Datang '.$this->session->userdata('nama_user');
+				$this->session->set_flashdata('success', 'Login Berhasil! Selamat Datang <b>'.$this->session->userdata('nama_user').'</b>');
+				redirect('home');
+				// echo 'Login Berhasil! Selamat Datang '.$this->session->userdata('nama_user');
 			} else {
 				$this->session->set_flashdata('failed', 'Login Gagal! Silahkan Coba Lagi');
 				redirect('auth');
-			}
+			}	
 		}
 	}
 

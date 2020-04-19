@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+<<<<<<< HEAD
 ## [0.1.0] - 2020-04-10
 
 ### Added
@@ -46,6 +47,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * fixed typos in rumah_sakit.php
 * fixed upload error
 * gitignore excludes .env.development and uploads/
+=======
+### added
+
+* Profil Doctor
+* Profil Rumah Sakit
+>>>>>>> e664005e1e8c755dd55d145b76644fa006d8fe46
 
 ## [0.0.2] - 2020-04-09
 

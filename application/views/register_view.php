@@ -39,7 +39,7 @@
                 <div class="form-group">
                     <label class="text-info">Alamat</label>
                     <br>
-                    <input type="text" name="alamat" class="form-control">
+                    <textarea name="alamat" style="resize:vertical" class="form-control" cols="4"></textarea>
                 </div>
                 <div class="form-group">
                     <label class="text-info">Email</label>
