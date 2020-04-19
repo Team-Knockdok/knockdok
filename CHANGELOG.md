@@ -29,6 +29,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * function delete_data_RS() at rumah_sakit_model.php
 * bunch of pages
 * dummy file inside uploads/users/
+* Profil Doctor
+* Profil Rumah Sakit
 
 ### changed
 
