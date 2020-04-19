@@ -18,6 +18,7 @@ class Auth extends CI_Controller {
 			redirect('home');
 		} else {
 			$data['main_view'] = 'login_view';
+			$data['titla'] = 'Login';
 			$this->load->view('template', $data);
 		}
 	}
@@ -29,6 +30,7 @@ class Auth extends CI_Controller {
 			redirect('home');
 		} else {
 			$data['main_view'] = 'register_view';
+			$data['title'] = 'Register';
 			$this->load->view('template', $data);	
 		}
 	}
@@ -112,7 +114,7 @@ class Auth extends CI_Controller {
 	public function logout()
 	{
 		$this->session->sess_destroy();
-		redirect('auth');
+		redirect('home');
 	}
 
 }
