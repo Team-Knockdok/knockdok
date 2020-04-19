@@ -15,8 +15,8 @@ class rumah_sakit extends CI_Controller {
     public function index()
     {
         $data['data_rumah_sakit'] = $this->rumah_sakit_model->get_data_rumah_sakit();
-        var_dump($data);
-        // $this->load->view('View File', $data);
+        $data['main_view'] = 'rumah_sakit_view';
+        $this->load->view('template', $data);
     }
 
     public function insert_data_RS()

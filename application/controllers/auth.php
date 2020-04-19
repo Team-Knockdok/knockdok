@@ -18,7 +18,7 @@ class Auth extends CI_Controller {
 			redirect('home');
 		} else {
 			$data['main_view'] = 'login_view';
-			$data['titla'] = 'Login'
+			$data['titla'] = 'Login';
 			$this->load->view('template', $data);
 		}
 	}

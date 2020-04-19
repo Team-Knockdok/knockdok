@@ -24,7 +24,7 @@
                     <div id="dokter" class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="#">Pesan</a>
                         <a class="dropdown-item" href="#">Data Dokter</a>
-                        <a class="dropdown-item" href="#">Data Rumah Sakit</a>
+                        <a class="dropdown-item" href="<?= base_url() ?>rumah_sakit">Data Rumah Sakit</a>
                     </div>
                 </li>
                 <?php 
