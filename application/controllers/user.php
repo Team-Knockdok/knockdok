@@ -5,13 +5,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class User extends CI_Controller {
 
-    
+
     public function __construct()
     {
         parent::__construct();
         $this->load->model('user_model');
     }
-    
+
 
     public function index()
     {
@@ -27,7 +27,8 @@ class User extends CI_Controller {
     {
         if ($this->session->userdata('logged_in') == TRUE) {
             $data['main_view'] = 'riwayat_view';
-            $data['data_riwayat'] = $this->user_model->get_data_riwayat();
+            $username = $this->session->userdata('username');
+            $data['data_riwayat'] = $this->user_model->get_data_riwayat_by_username($username);
             $this->load->view('template', $data);
         } else {
             $this->session->set_flashdata('failed', 'session login telah habis, silahkan login kembali!');
