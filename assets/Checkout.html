@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Halaman Checkout</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <style>
+        form {
+            color: #579ca1;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #579ca1;">
+        <a class="navbar-brand" href="#" style="font-size: 30px;color:white;">KnockDoc</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" style="color:white;" href="#">Beranda <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" style="color:white;" href="#">Cari Dokter?</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" style="color:white;" href="#">Pembayaran</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" style="color:white;" href="#">Akun</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <h3 style="color:#579ca1; margin-top: 30px; margin-left: 30px;">Checkout</h3>
+    <br>
+    <br>
+    <!-- Checkout form -->
+    <form style="padding-left: 100px;">
+        <div class="form-group input-material col-sm-4">
+            <label for="nama">Nama</label>
+            <input type="text" class="form-control" id="nama" placeholder=" ">
+        </div>
+        <div class="form-group input-material col-sm-4">
+            <label for="nama_dokter">nama_dokter</label>
+            <input type="text" class="form-control" id="nama_dokter" placeholder=" ">
+        </div>
+        <div class="form-group input-material col-sm-4">
+            <label for="telp_dokter">No. Telpon Dokter</label>
+            <input type="text" class="form-control" id="telp_dokter" placeholder=" ">
+        </div>
+        <div class="form-group input-material col-sm-4">
+            <label for="nama_rumahsakit">Rumah Sakit</label>
+            <input type="text" class="form-control" id="nama_rumahsakit" placeholder=" ">
+        </div>
+        <div class="form-group input-material col-sm-4">
+            <label for="alamt_rumahsakit">Alamat Rumah sakit</label>
+            <input type="text" class="form-control" id="alamt_rumahsakit" placeholder=" ">
+        </div>
+        <div class="form-row ">
+            <div class="form-group input-material col-sm-4" style="padding-left: 20px ;">
+                <label for="telp_rumahsakit">No. Telepon Rumah Sakit</label>
+                <input type="text" class="form-control" id="telp_rumahsakit" placeholder=" ">
+            </div>
+            <div class="form-group " style="padding-left: 600px;">
+                <label for="total_biaya">Total Biaya</label>
+                <input type="text" class="form-control" id="total_biaya" placeholder=" ">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group input-material col-sm-4" style="padding-left: 20px;">
+                <label for="waktu">Waktu</label>
+                <input type="text" class="form-control" id="waktu" placeholder=" ">
+            </div>
+            <button type="submit " class="btn btn-info" style="margin-left:600px;margin-bottom: 15px; align-self: center; margin-top: 30px;">Bayar</button>
+        </div>
+    </form>
+    <br>
+    <br>
+</body>
+
+</html>
