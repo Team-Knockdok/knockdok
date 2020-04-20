@@ -7,6 +7,31 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.0] - 2020-04-20
+
+### Added
+
+* cari controller and view
+* emerald style in assets/style/style.css
+* dokter model api getRsById
+* profil dokter view
+* foto default rumah sakit
+* foto default dokter
+
+### Changed
+
+* routes to Home instead of Welcome
+* template routing and title
+* profil dokter
+* rumah sakit model api name
+
+### Deleted
+
+* old assets/style.css file
+* dokter view
+
+## [0.1.1] [YANKED]
+
 ### Added
 
 * Dokter mvc
