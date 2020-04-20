@@ -3,10 +3,14 @@
 }
 
 .headers{
-	color: #579CA1; 
-	padding-top: 30px; 
+	color: #579CA1;
+	padding-top: 30px;
 	padding-left: 50px;
 	padding-bottom: 25px;
+}
+
+.emerald {
+	color: #579CA1;
 }
 
 .container{
