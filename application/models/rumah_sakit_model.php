@@ -4,13 +4,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class rumah_sakit_model extends CI_Model {
 
-    public function get_data_rumah_sakit()
+    public function get()
     {
-        return $this->db->get('tb_rs')
-                        ->result();
+        return $this->db->get('tb_rs')->result_array();
     }
 
-    public function get_data_rumah_sakit_by_id($id)
+    public function getById($id)
     {
         return $this->db->where('id_RS', $id)
                         ->get('tb_rs')->row();
@@ -26,7 +25,7 @@ class rumah_sakit_model extends CI_Model {
         );
 
         $this->db->insert('tb_rs', $data);
-        
+
         if ($this->db->affected_rows() > 0) {
             return TRUE;
         } else {
