@@ -3,7 +3,7 @@
 <!-- Search form -->
 <form class="form-inline d-flex justify-content-center md-form form-sm mt-0">
     <button type="submit" class="form-control btn btn-info">Telusuri</button>
-    <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Cari nama dokter atau rumah sakit. Contoh: rs Indah" aria-label="Search">
+    <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Cari nama dokter atau rumah sakit. Contoh: RS Indah" aria-label="Search">
 </form>
 <br><br>
 
@@ -45,13 +45,6 @@
             <h5 class="card-title my-4" style="color:#579ca1;">RS. <?= $rs["nama_rs"] ?></h5>
           </center>
         </a>
-      </div>
-      <div class="card-footer">
-        <center>
-          <button type="submit" class="form-control btn btn-info col-sm-8">
-            Pesan
-          </button>
-        </center>
       </div>
     </div>
   <?php endforeach; ?>
