@@ -26,6 +26,7 @@ class Home extends CI_Controller {
             $data['title'] = 'Bantuan';
             $this->load->view('template', $data);
         } else {
+            $this->session->set_flashdata('failed', 'session login telah habis, silahkan login kembali!');
             redirect('auth');
         }
     }
