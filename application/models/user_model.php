@@ -13,8 +13,8 @@ class User_model extends CI_Model {
             ->join('tb_jadwal', 'id_jadwal')
             ->join('tb_dokter', 'id_dokter')
             ->join('tb_rs', 'id_rs')
-            ->join('tb_user', 'username')
-            ->where('username', $username)
+            // ->join('tb_user', 'username')
+            ->where('tb_pesanan.username', $username)
             ->get()
             ->result_array();
     }
