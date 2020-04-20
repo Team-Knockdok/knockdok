@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Profil Pengguna</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <style>
+        html,
+        body {
+            min-height: 100%;
+        }
+        
+        body,
+        div,
+        form,
+        input {
+            padding: 0;
+            margin: 0;
+            outline: none;
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            color: white;
+        }
+        
+        h1,
+        h2 {
+            text-transform: uppercase;
+            font-weight: 400;
+        }
+        
+        h2 {
+            margin: 0 0 0 8px;
+        }
+        
+        .main-block {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            padding: 25px;
+            background: #579ca1;
+        }
+        
+        .left-part,
+        form {
+            padding: 25px;
+        }
+        
+        .left-part {
+            text-align: center;
+        }
+        
+        .fa-graduation-cap {
+            font-size: 72px;
+        }
+        
+        form {
+            background: #579ca1;
+        }
+        
+        .title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        input {
+            padding: 5px;
+            margin-bottom: 30px;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #eee;
+        }
+        
+        input::placeholder {
+            color: #eee;
+        }
+        
+        @media (min-width: 568px) {
+            html,
+            body {
+                height: 100%;
+            }
+            .main-block {
+                flex-direction: row;
+                height: calc(100% - 50px);
+            }
+            .left-part,
+            form {
+                flex: 1;
+                height: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #579ca1;">
+        <a class="navbar-brand" href="#" style="font-size: 30px;color:white;">KnockDoc</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" style="color:white;" href="#">Beranda <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" style="color:white;" href="#">Cari Dokter?</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" style="color:white;" href="#">Pembayaran</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" style="color:white;" href="#">Akun</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <h3 style="color:#579ca1; padding-top:30px; padding-left: 30px; padding-bottom: 30px; display: block; background-color #579ca1; margin:0;">Profil Pengguna</h3>
+    <div class="main-block">
+        <div class="left-part">
+            <i class="fas fa-graduation-cap"></i>
+            <img src="https://rlv.zcache.com/lightning_cat_kitty_pet_feline_pet_cat_kittens_classic_round_sticker-r57a985b93dda4cda895978c5da4396a1_0ugmp_8byvr_540.jpg" class="rounded-circle" style="height: 200px width: 200px;" : background-color: powderblue ">
+        </div>
+      <form>
+        <div class="title ">
+          <h2>Username : </h2>
+        </div>
+        <div class="form-row ">
+          <div class="form-group col-md-6 ">
+            <label for="nama_depan ">Nama Depan</label>
+            <input type="email " class="form-control " id="nama_depan " placeholder="Depan ">
+          </div>
+          <div class="form-group col-md-6 ">
+            <label>Nama Belakang</label>
+            <input type="password " class="form-control " id="nama_belakang " placeholder="Belakang ">
+          </div>
+        </div>
+        <div class="form-group ">
+          <label >Alamat</label>
+          <input type="text " class="form-control " id="alamat " placeholder="Alamat ">
+        </div>
+        <div class="form-group ">
+          <label>Email</label>
+          <input type="text " class="form-control " id="email " placeholder="Email ">
+        </div>
+        <div class="form-row col-md-6 ">
+            <label>Nomor Telpon</label>
+            <input type="text " class="form-control " id="telp " placeholder="No. Telp ">
+          </div>
+        <div class="form-row ">
+          <div class="form-group col-md-6 ">
+            <label>Password</label>
+            <input type="text " class="form-control " id="password " placeholder="Password ">
+          </div>
+        <button type="submit " class="btn btn-primary " style="margin-left:50px;margin-bottom: 15px; align-self: center; ">Edit Profile</button>
+        </div>
+      </form>
+    </div>
+  <br><br>
+
+</body>
+</html>
