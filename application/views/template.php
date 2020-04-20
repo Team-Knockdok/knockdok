@@ -4,8 +4,7 @@
 <head>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/style.css">
-
-    <title><?= $title ?></title>
+    <title>KnockDoc</title>
 </head>
 
 <body>
@@ -17,14 +16,10 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item active">
-                    <a class="nav-link" href="<?= base_url() ?>home">Beranda <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="<?= base_url() ?>home">Beranda<span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#dokter" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Cari Dokter?</a>
-                    <div id="dokter" class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="<?= base_url() ?>dokter">Cari Dokter</a>
-                        <a class="dropdown-item" href="<?= base_url() ?>rumah_sakit">Cari Rumah Sakit</a>
-                    </div>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= base_url()."cari" ?>">Cari Dokter?</a>
                 </li>
                 <?php
                     if ($this->session->userdata('logged_in') == TRUE) {
