@@ -15,7 +15,7 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
+        <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item active">
                     <a class="nav-link" href="<?= base_url() ?>home">Beranda<span class="sr-only">(current)</span></a>
@@ -24,7 +24,7 @@
                     <a class="nav-link" href="<?= base_url()."cari" ?>">Cari Dokter?</a>
                 </li>
                 <?php
-                    if ($this->session->userdata('logged_in') == TRUE) {
+                    if ($this->session->userdata('logged_in')) {
                         echo '
                         <li class="nav-item">
                             <a class="nav-link" href="#">Pembayaran</a>
@@ -33,7 +33,7 @@
                             <a class="nav-link dropdown-toggle" href="#akun" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Akun</a>
                             <div class="dropdown-menu" id="akun" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="#">Profil</a>
-                                <a class="dropdown-item" href="#">Riwayat</a>
+                                <a class="dropdown-item" href="'.base_url().'user/riwayat">Riwayat</a>
                                 <a class="dropdown-item" href="'.base_url().'home/bantuan">Bantuan</a>
                                 <a class="dropdown-item" href="'.base_url().'auth/logout">Logout</a>
                             </div>
@@ -50,6 +50,11 @@
                 ?>
 
             </ul>
+            <?php if($this->session->userdata('logged_in')): ?>
+            <div class="mr-5">Hello, <a href="<?= base_url('user') ?>" style="color: purple">
+                <i><?= $this->session->userdata('username') ?></i>
+            </a></div>
+            <?php endif; ?>
         </div>
     </nav>
 
