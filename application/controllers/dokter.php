@@ -9,11 +9,12 @@ class Dokter extends CI_Controller {
 		$this->load->model('dokter_model');
 	}
 
-	public function index()
+	public function profil($id)
 	{
-		$data['main_view'] = 'dokter_view';
+		$data['main_view'] = 'profil_dokter_view';
 		$data['title'] = 'Dokter';
-		$data['list_dokter'] = $this->dokter_model->get();
+		$data['dokter'] = $this->dokter_model->getById($id);
+		$data['list_rs'] = $this->dokter_model->getRsById($id);
 		$this->load->view('template', $data);
 	}
 
