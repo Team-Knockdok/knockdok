@@ -1,4 +1,9 @@
-#navibar {
+html, body {
+	height :100%;
+	max-width : 100%;
+	display: block;
+}
+#navbar {
 	background-color: #579CA1;
 }
 
@@ -18,6 +23,10 @@
 	padding-bottom: 50px;
 }
 
+.container-fluid {
+	padding :0;
+}
+
 #btnsubmit{
 	text-align: center;
 }
@@ -33,4 +42,8 @@
 p{
 	padding-left: 50px;
 	padding-right: 50px;
+}
+.profile-username {
+	text-align: center;
+	color: white;
 }
