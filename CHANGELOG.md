@@ -19,6 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * fixed login_view.php
 * fixed riwayat_view.php
 * fixed register_view.php
+* change bantuan_view content
 
 ## [0.2.3] - 2020-04-20
 
