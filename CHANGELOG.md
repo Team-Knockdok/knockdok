@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * add modal box at user_profil_view
 * add get_data_user() function at user_model
 * add edit_data_profile() function at user_omodel
+* add edit data profile feature
 
 ### Changed
 
