@@ -27,6 +27,17 @@ class User_model extends CI_Model {
             ->result_array();
     }
 
+    public function edit_data_profile($data, $username)
+    {
+        $this->db->where('username', $username)->update('tb_user', $data);
+        
+        if ($this->db->affected_rows() > 0) {
+            return TRUE;
+        } else {
+            return FALSE;
+        }
+    }
+
 }
 
 /* End of file User_model.php */
