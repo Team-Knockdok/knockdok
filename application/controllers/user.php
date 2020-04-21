@@ -39,6 +39,49 @@ class User extends CI_Controller {
         }
     }
 
+    public function edit_data_profile()
+    {
+        // FORM VALIDATION
+		$this->form_validation->set_rules('nama_depan', 'Nama depan', 'required|min_length[5]|max_length[15]');
+		$this->form_validation->set_rules('nama_belakang', 'Nama belakang', 'required|max_length[15]');
+		$this->form_validation->set_rules('password', 'Password', 'required|min_length[5]|max_length[30]');
+		$this->form_validation->set_rules('alamat', 'Alamat', 'required|min_length[10]|max_length[100]');
+		$this->form_validation->set_rules('email', 'Email', 'required|max_length[35]|valid_email');
+        $this->form_validation->set_rules('nomor_telepon', 'Nomor telepon', 'required|min_length[12]|max_length[12]');
+        
+        $username = $this->session->userdata('username');
+
+        $data = array(
+            'nama_depan' => $this->input->post('nama_depan'),
+            'nama_belakang' => $this->input->post('nama_belakang'),
+            'password' => $this->input->post('password'),
+            'alamat' => $this->input->post('alamat'),
+            'email' => $this->input->post('email'),
+            'nomor_telepon' => $this->input->post('nomor_telepon') 
+        );
+
+        if ($this->session->userdata('logged_in') == TRUE) {
+            if ($this->form_validation->run() == TRUE) {
+                if ($this->user_model->edit_data_profile($data, $username) == TRUE) {
+                    $this->session->set_flashdata('success', 'Ubah Data Profil Berhasil!');
+                    redirect('user');
+                } else {
+                    $this->session->set_flashdata('failed', 'Ubah Data Profil Gagal! Silahkan Coba Lagi!');
+                    redirect('user');
+                }
+                
+            } else {
+                $this->session->set_flashdata('failed', validation_errors());
+                redirect('user');
+            }
+            
+        } else {
+            $this->session->set_flashdata('failed', 'session login telah habis, silahkan login kembali!');
+            redirect('auth');
+        }
+        
+    }
+
 }
 
 /* End of file User.php */

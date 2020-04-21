@@ -61,25 +61,25 @@
 				</button>
 			</div>
 			<div class="modal-body">
-				<form method="post" action="">
+				<form method="post" action="<?= base_url() ?>user/edit_data_profile">
 					<div class="form-row">
 						<div class="form-group col-md-6">
 							<label for="nama_depan">Nama Depan</label>
-							<input type="text" class="form-control" id="nama_depan" class="nama_depan" value="<?php echo $data_user->nama_depan ?>" placeholder="Nama Depan">
+							<input type="text" class="form-control" id="nama_depan" name="nama_depan" value="<?php echo $data_user->nama_depan ?>" placeholder="Nama Depan">
 						</div>
 						<div class=" form-group col-md-6 ">
 							<label for="nama_belakang">Nama Belakang</label>
-							<input type="text" class="form-control" id="nama_belakang" class="nama_belakang" value="<?php echo $data_user->nama_belakang ?>" placeholder="Nama Belakang">
+							<input type="text" class="form-control" id="nama_belakang" name="nama_belakang" value="<?php echo $data_user->nama_belakang ?>" placeholder="Nama Belakang">
 						</div>
 					</div>
 					<div class=" form-group ">
 						<label for="alamat">Alamat</label>
-						<textarea class="form-control" id="alamat" class="alamat" cols="4" style="resize:vertical"
+						<textarea class="form-control" id="alamat" name="alamat" cols="4" style="resize:vertical"
 							placeholder="alamat"><?php echo $data_user->alamat ?></textarea>
 					</div>
 					<div class=" form-group ">
 						<label for="email">Email</label>
-						<input type="email" class="form-control" id="email" class="email" value="<?php echo $data_user->email ?>" placeholder="Email">
+						<input type="email" class="form-control" id="email" name="email" value="<?php echo $data_user->email ?>" placeholder="Email">
 					</div>
 					<div class=" form-row">
 						<div class="form-group col-md-6">
