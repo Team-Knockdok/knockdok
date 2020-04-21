@@ -1,5 +1,6 @@
 <h3 style="color:#579ca1; padding-top:30px; padding-left: 30px; padding-bottom: 30px; display: block; background-color #579ca1; margin:0;">
-	Profil Pengguna</h3>
+    Profil Pengguna
+</h3>
 <div class="main-block">
     <div class="row">
         <div class="left-part col-md-4">
@@ -45,6 +46,5 @@
                 </div>
             </form>
         </div>
-    </div>
-        
+    </div>        
 </div>
