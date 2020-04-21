@@ -60,6 +60,7 @@
 
     <div class="container-fluid">
         <!-- NOTIFICATION -->
+        <br>
         <?php
             $success = $this->session->flashdata('success');
             $failed = $this->session->flashdata('failed');
