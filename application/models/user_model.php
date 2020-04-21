@@ -4,6 +4,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class User_model extends CI_Model {
 
+    public function get_data_user($username)
+    {
+        return $this->db->where('username', $username)
+                        ->get('tb_user')
+                        ->row();
+        
+    }
+
     public function get_data_riwayat_by_username($username)
     {
         return $this->db

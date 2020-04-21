@@ -16,7 +16,9 @@ class User extends CI_Controller {
     public function index()
     {
         if ($this->session->userdata('logged_in') == TRUE) {
+            $username = $this->session->userdata('username');
             $data['main_view'] = 'user_profil_view';
+            $data['data_user'] = $this->user_model->get_data_user($username);
             $this->load->view('template', $data);
         } else {
             $this->session->set_flashdata('failed', 'session login telah habis, silahkan login kembali!');

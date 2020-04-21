@@ -4,39 +4,39 @@
 <div style="background-color: #579ca1; padding: 100px 0px; height : 80vh" class="row">
     <br>
     <div class="col-md-4">
-        <img src="https://rlv.zcache.com/lightning_cat_kitty_pet_feline_pet_cat_kittens_classic_round_sticker-r57a985b93dda4cda895978c5da4396a1_0ugmp_8byvr_540.jpg"
-            class="rounded-circle mx-auto d-block" style="width: 300px ; max-height: auto; background-color: powderblue ">
-        <h2 class="profile-username">username</h2>
+        <img src="<?= base_url() ?>uploads/users/<?php echo $data_user->foto_profil ?>"
+            class="rounded-circle mx-auto d-block" style="width: auto ; height: 300px; background-color: powderblue ">
+        <h2 class="profile-username"><?php echo $data_user->username; ?></h2>
     </div>
     <div class="col-md-7">
         <div class=" form-row ">
             <div class="form-group col-md-6">
                 <label for="nama_depan" style="color:white">Nama Depan</label>
-                <input type="text" class=" form-control " id=" nama_depan " placeholder="Depan" readonly>
+                <input type="text" class=" form-control " id="nama_depan" placeholder="Depan" value="<?php echo $data_user->nama_depan ?>" readonly>
             </div>
             <div class=" form-group col-md-6 ">
                 <label for="nama_belakang" style="color:white">Nama Belakang</label>
-                <input type="text" class=" form-control " id=" nama_belakang " placeholder="Belakang" readonly>
+                <input type="text" class=" form-control " id=" nama_belakang " placeholder="Belakang" value="<?php echo $data_user->nama_belakang ?>" readonly>
             </div>
         </div>
         <div class=" form-group ">
             <label for="alamat" style="color:white">Alamat</label>
-            <textarea class="form-control" id="alamat" cols="4" style="resize:vertical" readonly></textarea>
+            <textarea class="form-control" id="alamat" cols="4" style="resize:vertical" readonly><?php echo $data_user->alamat ?></textarea>
         </div>
         <div class=" form-group ">
             <label for="email" style="color:white">Email</label>
-            <input type="email" class=" form-control " id=" email " placeholder="Email" readonly>
+            <input type="email" class=" form-control " id=" email " placeholder="Email" value="<?php echo $data_user->email ?>" readonly>
         </div>
         <div class=" form-row">
             <div class="form-group col-md-6">
                 <label for="telp" style="color:white">Nomor Telpon</label>
-                <input type="number" class=" form-control " id=" telp " placeholder="No. Telp" readonly>
+                <input type="number" class=" form-control " id=" telp " placeholder="No. Telp" value="<?php echo $data_user->nomor_telepon ?>" readonly>
             </div>
         </div>
         <div class=" form-row ">
             <div class=" form-group col-md-6 ">
                 <label for="password" style="color:white">Password</label>
-                <input type="password" class=" form-control " id=" password " placeholder="Password" readonly>
+                <input type="password" class=" form-control " id="password" placeholder="Password" value="<?php echo $data_user->password ?>" readonly>
             </div>
             <div class="col-md-6">
                 <button type="button" class="btn btn-primary" style="margin-left : 20px;align-self: center;" data-toggle="modal" data-target="#editProfil">
@@ -65,30 +65,30 @@
 					<div class="form-row">
 						<div class="form-group col-md-6">
 							<label for="nama_depan">Nama Depan</label>
-							<input type="text" class="form-control" id="nama_depan" class="nama_depan" placeholder="Nama Depan">
+							<input type="text" class="form-control" id="nama_depan" class="nama_depan" value="<?php echo $data_user->nama_depan ?>" placeholder="Nama Depan">
 						</div>
 						<div class=" form-group col-md-6 ">
 							<label for="nama_belakang">Nama Belakang</label>
-							<input type="text" class="form-control" id="nama_belakang" class="nama_belakang" placeholder="Nama Belakang">
+							<input type="text" class="form-control" id="nama_belakang" class="nama_belakang" value="<?php echo $data_user->nama_belakang ?>" placeholder="Nama Belakang">
 						</div>
 					</div>
 					<div class=" form-group ">
 						<label for="alamat">Alamat</label>
 						<textarea class="form-control" id="alamat" class="alamat" cols="4" style="resize:vertical"
-							placeholder="alamat"></textarea>
+							placeholder="alamat"><?php echo $data_user->alamat ?></textarea>
 					</div>
 					<div class=" form-group ">
 						<label for="email">Email</label>
-						<input type="email" class="form-control" id="email" class="email" placeholder="Email">
+						<input type="email" class="form-control" id="email" class="email" value="<?php echo $data_user->email ?>" placeholder="Email">
 					</div>
 					<div class=" form-row">
 						<div class="form-group col-md-6">
 							<label for="telp">Nomor Telpon</label>
-							<input type="number" class=" form-control " id="telp" name="nomor_telepon" placeholder="No. Telp">
+							<input type="number" class=" form-control " id="telp" name="nomor_telepon" value="<?php echo $data_user->nomor_telepon ?>" placeholder="No. Telp">
 						</div>
 						<div class=" form-group col-md-6 ">
 							<label for="password">Password</label>
-							<input type="password" class=" form-control " id="password" name="password" placeholder="Password">
+							<input type="password" class=" form-control " id="password" name="password" value="<?php echo $data_user->password ?>" placeholder="Password">
 						</div>
 					</div>
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
