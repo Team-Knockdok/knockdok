@@ -32,7 +32,7 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#akun" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Akun</a>
                             <div class="dropdown-menu" id="akun" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">Profil</a>
+                                <a class="dropdown-item" href="'.base_url().'user/">Profil</a>
                                 <a class="dropdown-item" href="'.base_url().'user/riwayat">Riwayat</a>
                                 <a class="dropdown-item" href="'.base_url().'home/bantuan">Bantuan</a>
                                 <a class="dropdown-item" href="'.base_url().'auth/logout">Logout</a>
