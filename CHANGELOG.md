@@ -11,6 +11,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 * user_profil_view
 
+### Changed
+
+* fixed template.php
+* fixed cari_view.php
+* fixed bantuan_view.php
+* fixed login_view.php
+* fixed riwayat_view.php
+* fixed register_view.php
+
 ## [0.2.3] - 2020-04-20
 
 ### Added
