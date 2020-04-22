@@ -110,7 +110,7 @@
 				</button>
 			</div>
 			<div class="modal-body">
-				<form method="post" action="" enctype="multipart/form-data">
+				<form method="post" action="<?= base_url() ?>user/edit_profile_picture/<?php echo $data_user->foto_profil ?>" enctype="multipart/form-data">
 					<div class="form-group">
 						<input type="file" name="foto_profil">
 					</div>

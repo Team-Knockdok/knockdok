@@ -82,40 +82,40 @@ class User extends CI_Controller {
         
     }
 
-}
-
-public function edit_profile_picture($file_image)
-{
-    $username = $this->session->userdata('username');
-    
-    if ( $this->session->userdata('logged_in') == TRUE) {
+    public function edit_profile_picture($file_image){
+        $username = $this->session->userdata('username');
         
-        $path = './uploads/users';
-        $config['upload_path'] = $path;
-        $config['allowed_types'] = 'jpg|png';
-        $config['max_size']  = '100000';
-        
-        $this->load->library('upload', $config);
-        
-        if ($this->upload->do_upload('foto_profil')){
-            $data = array('foto_profil' => $this->upload->data());
-            if ($this->user_model->edit_data_profil($data, $username) == TRUE) {
+        if ( $this->session->userdata('logged_in') == TRUE) {
+            
+            $path = './uploads/users/';
+            $config['upload_path'] = $path;
+            $config['allowed_types'] = 'jpg|png';
+            $config['max_size']  = '100000';
+            
+            $this->load->library('upload', $config);
+            
+            if ($this->upload->do_upload('foto_profil')){
+                $image = $this->upload->data();
+                $data = array('foto_profil' => $image['file_name']);
                 unlink($path.$file_image);
-                $this->session->set_flashdata('success', 'Ubah Foto Profil Berhasil!');
+                if ($this->user_model->edit_data_profile($data, $username) == TRUE) {
+                    $this->session->set_flashdata('success', 'Ubah Foto Profil Berhasil!');
+                    redirect('user');
+                }
+            } else{
+                $data = array('upload_data' => $this->upload->data());
+                $this->session->set_flashdata('failed', $this->upload->display_errors());
                 redirect('user');
             }
-        } else{
-            $data = array('upload_data' => $this->upload->data());
-            $this->session->set_flashdata('failed', $this->upload->display_errors());
-            redirect('user');
+            
+        } else {
+            $this->session->set_flashdata('failed', 'session login telah habis, silahkan login kembali!');
+            redirect('auth');
         }
         
-    } else {
-        $this->session->set_flashdata('failed', 'session login telah habis, silahkan login kembali!');
-        redirect('auth');
-    }
     
-
+    }
 }
+
 
 /* End of file User.php */
