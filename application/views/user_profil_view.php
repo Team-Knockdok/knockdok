@@ -110,7 +110,7 @@
 				</button>
 			</div>
 			<div class="modal-body">
-				<form method="post" action="" enctype="multipart/formdata">
+				<form method="post" action="" enctype="multipart/form-data">
 					<div class="form-group">
 						<input type="file" name="foto_profil">
 					</div>
