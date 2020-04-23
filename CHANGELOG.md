@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased] - 2020-04-23
 
 ### Added
+* added add_data_dokter() function at dokter.php
+* added insert_data_dokter($data) at dokter_model.php
 
 ### Changed
 * fixing bug at add data hospital route
