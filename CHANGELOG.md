@@ -16,6 +16,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * added get_schedule_by_id($id_jadwal) at dokter.php
 * added dataTable javascript function at template.php for getting data into table
 * added pesan_jadwal(id) javascript function at template.php
+* added pesan_schedule($id_jadwal) function at dokter.php
+* added add_data_pesanan($data_pesanan) at dokter_model.php
+* added get_pesanan_by_id() at dokter_model.php
+* added add_data_transaksi($data_transaksi) at dokter_model.php
+* added delete_data_pesanan() at dokter_model.php
 
 
 ### Changed
