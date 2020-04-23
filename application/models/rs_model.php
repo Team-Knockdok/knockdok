@@ -6,14 +6,16 @@ class Rs_model extends CI_Model {
 
     public function get()
     {
-        return $this->db->get('tb_rs')->result_array();
+        return $this->db->where('delete_status', 'false')
+                        ->get('tb_rs')
+                        ->result_array();
     }
 
     public function getById($id)
     {
-        return $this->db
-            ->where('id_rs', $id)
-            ->get('tb_rs')->row_array();
+        return $this->db->where('id_rs', $id)
+                        ->get('tb_rs')
+                        ->row_array();
     }
 
     public function getDokterById($id)
