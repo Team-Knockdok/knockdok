@@ -10,6 +10,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 * added add_data_dokter() function at dokter.php
 * added insert_data_dokter($data) at dokter_model.php
+* added hapus_data_dokter($id_dokter) at dokter.php
+* added delete_data_dokter($id_dokter) at dokter_model.php
 
 ### Changed
 * fixing bug at add data hospital route
