@@ -48,6 +48,18 @@ class dokter_model extends CI_Model {
     }
   }
 
+  public function daftar_rs($data)
+  {
+    $this->db->insert('tb_pivot_dokter_rs', $data);
+    
+    if ($this->db->affected_rows() > 0) {
+      return TRUE;
+    } else {
+      return FALSE;
+    }
+    
+  }
+
 }
 
 ?>

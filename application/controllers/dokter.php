@@ -7,7 +7,7 @@ class Dokter extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('dokter_model');
-	}
+	} 
 
 	public function profil($id)
 	{
@@ -97,6 +97,33 @@ class Dokter extends CI_Controller {
             echo json_encode('DELETE failed');
 		}
 	}
+
+	public function daftar_rumah_sakit()
+	{
+		$data = array(
+			'id_dokter' => $this->input->post('id_dokter'),
+			'id_rs' => $this->input->post('id_rs')
+		);
+
+		if ($this->dokter_model->daftar_rs($data) == TRUE) {
+			// activate this if you have the view to show this notification
+            // $this->session->set_flashdata('failed', 'Daftar Rumah Sakit Berhasil! Silahkan coba lagi');
+			// redirect('');
+			
+			// unactivate this if you already have the view
+            echo json_encode('POST success');
+		} else {
+			// activate this if you have the view to show this notification
+            // $this->session->set_flashdata('failed', 'Daftar Rumah Sakit Gagal! Silahkan coba lagi');
+            // redirect('');
+
+            // unactivate this if you already have the view
+            echo json_encode('POST failed');
+		}
+		
+	}
+
+
 
 }
 
