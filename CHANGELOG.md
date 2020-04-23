@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * fixing bug at add data hospital route
 * fixing delete data hospital route
 * fixing add_hospital function at rs_model
+* fixing get() function at rs_model
 
 ## [Unreleased] - 2020-04-22
 
