@@ -14,6 +14,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * added delete_data_dokter($id_dokter) at dokter_model.php
 * added daftar_rumah_sakit() function at dokter.php
 * added daftar_rs($data) function at dokter_model.php
+* added make_schedule() function at dokter.php
+* added add_schedule($data) function at dokter_model.php
 
 ### Changed
 * fixing bug at add data hospital route
