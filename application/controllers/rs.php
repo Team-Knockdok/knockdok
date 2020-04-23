@@ -71,17 +71,25 @@ class RS extends CI_Controller {
         }
     }
 
-    // public function delete_data_RS($id_rs)
-    // {
-    //     if ($this->rumah_sakit_model->delete_hospital($id_rs) == TRUE) {
-    //         $this->session->set_flashdata('success', 'Hapus data rumah sakit berhasil!');
-    //         redirect('');
-    //     } else {
-    //         $this->session->set_flashdata('failed', 'Hapus data gagal! Silahkan coba lagi');
-    //         redirect('');
-    //     }
+    public function delete_data_RS($id_rs)
+    {
+        if ($this->rs_model->delete_hospital($id_rs) == TRUE) {
+            // activate this if you have the view to show this notification
+            // $this->session->set_flashdata('success', 'Hapus data rumah sakit berhasil!');
+            // redirect('');
 
-    // }
+            // unactivate this if you already have the view
+            echo json_encode('DELETE success');
+        } else {
+            // activate this if you have the view to show this notification
+            // $this->session->set_flashdata('failed', 'Hapus data gagal! Silahkan coba lagi');
+            // redirect('');
+
+            // unactivate this if you already have the view
+            echo json_encode('DELETE failed');
+        }
+
+    }
 
 }
 
