@@ -32,9 +32,9 @@ class Rs_model extends CI_Model {
     {
         $data = array(
             'nama_RS' => $this->input->post('nama_rs'),
-            'nomor_Telepon_RS' => $this->input->post('nomor_Telepon'),
+            'nomor_Telepon_RS' => $this->input->post('nomor_telepon'),
             'alamat_RS' => $this->input->post('alamat'),
-            'gambar_RS' => $file
+            'foto_RS' => $file['file_name']
         );
 
         $this->db->insert('tb_rs', $data);
