@@ -134,7 +134,7 @@
                 $('#nama_rs').text(data.nama_rs)
                 $('#jadwal').text(data.waktu_mulai)
                 $('#durasi').text(data.estimasi_durasi)
-                $('#form_pesan_jadwal').attr('href', '<?= base_url() ?>dokter/...');
+                $('#form_pesan_jadwal').attr('action', '<?= base_url() ?>dokter/pesan_schedule/'+id);
             })
         }
     </script>

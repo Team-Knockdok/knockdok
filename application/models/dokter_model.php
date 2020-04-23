@@ -38,6 +38,50 @@ class dokter_model extends CI_Model {
                     ->result();
   }
 
+  public function get_pesanan_by_id($id_jadwal, $username)
+  {
+    return $this->db->where('id_jadwal', $id_jadwal)
+                  ->where('username', $username)
+                  ->where('tanggal_pemesanan', date('Y-m-d'))
+                  ->get('tb_pesanan')
+                  ->row_array();
+  }
+
+  public function add_data_pesanan($data)
+  {
+    $this->db->insert('tb_pesanan', $data);
+    
+    if ($this->db->affected_rows() > 0) {
+      return TRUE;
+    } else {
+      return FALSE;
+    }
+    
+  }
+
+  public function add_data_transaksi($data)
+  {
+    $this->db->insert('tb_transaksi', $data);
+    
+    if ($this->db->affected_rows() > 0) {
+      return TRUE;
+    } else {
+      return FALSE;
+    }
+  }
+
+  public function delete_data_pemesanan($id)
+  {
+    $this->db->where('id_pemesanan', $id)
+            ->delete('tb_pesanan');
+    
+    if ($this->db->affected_rows() > 0) {
+      return TRUE;
+    } else {
+      return FALSE;
+    }
+  }
+
   public function get_schedule_by_id($id_jadwal)
   {
     return $this->db->select('id_jadwal, nama_rs, nama_dokter, waktu_mulai, estimasi_durasi')

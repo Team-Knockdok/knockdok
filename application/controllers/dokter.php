@@ -31,6 +31,46 @@ class Dokter extends CI_Controller {
 		
 	}
 
+	public function pesan_schedule($id_jadwal)
+	{
+		$data_pesanan = array(
+			'keluhan' => $this->input->post('keluhan'),
+			'username' => $this->session->userdata('username'),
+			'id_jadwal' => $id_jadwal,
+			'tanggal_pemesanan' => date('Y-m-d')
+		);
+		if ($this->session->userdata('logged_in') == TRUE) {
+			if ($this->dokter_model->add_data_pesanan($data_pesanan) == TRUE) {
+
+				$data = $this->dokter_model->get_pesanan_by_id($id_jadwal, $this->session->userdata('username'));
+
+				$data_transaksi = array(
+					'username' => $this->session->userdata('username'), 
+					'status_bayar' => 'pending',
+					'rincian_biaya' => '45000',
+					'id_pesanan' => $data['id_pesanan']
+				);
+
+				if ($this->dokter_model->add_data_transaksi($data_transaksi) == TRUE) {
+					$this->session->set_flashdata('success', 'Tambah Data Pesanan Berhasil!');
+					redirect($_SERVER['HTTP_REFERER']);	
+				} else {
+					$this->dokter_model->delete_data_pesanan($data['id_pesanan']);
+					$this->session->set_flashdata('failed', 'Tambah Pesanan Gagal! Silahkan Coba Lagi');
+					redirect($_SERVER['HTTP_REFERER']);
+				}
+			} else {
+				$this->session->set_flashdata('failed', 'Tambah Pesanan Gagal! Silahkan Coba Lagi');
+				redirect($_SERVER['HTTP_REFERER']);
+			}
+			
+		} else {
+			$this->session->set_flashdata('failed', 'session login telah habis, silahkan login kembali!');
+            redirect('auth');
+		}
+		
+	}
+
 	public function get_schedule($id_dokter)
 	{
 		echo json_encode($this->dokter_model->get_schedule($id_dokter));
