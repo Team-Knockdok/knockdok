@@ -78,6 +78,26 @@ class Dokter extends CI_Controller {
 		
 	}
 
+	public function hapus_data_dokter($id_dokter)
+	{
+		$data = array('delete_status' => 'true');
+		if ($this->dokter_model->delete_data_dokter($id_dokter) == TRUE) {
+			// activate this if you have the view to show this notification
+            // $this->session->set_flashdata('success', 'Hapus data dokter berhasil!');
+            // redirect('');
+
+            // unactivate this if you already have the view
+            echo json_encode('DELETE success');
+		} else {
+			// activate this if you have the view to show this notification
+            // $this->session->set_flashdata('failed', 'Hapus data gagal! Silahkan coba lagi');
+            // redirect('');
+
+            // unactivate this if you already have the view
+            echo json_encode('DELETE failed');
+		}
+	}
+
 }
 
 /* End of file Dokter.php */

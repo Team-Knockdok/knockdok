@@ -37,6 +37,17 @@ class dokter_model extends CI_Model {
     
   }
 
+  public function delete_data_dokter($id_dokter) {
+
+    $this->db->where('id_dokter', $id_dokter)->delete('tb_dokter');
+    
+    if ($this->db->affected_rows() > 0) {
+      return TRUE;
+    } else {
+      return FALSE;
+    }
+  }
+
 }
 
 ?>
