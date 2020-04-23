@@ -5,6 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased] - 2020-04-24
+
+### Added
+* added jadwal_pemeriksaan_view.php
+* added get_schedule($id_dokter) function at dokter_model.php
+* added get_schedule_by_id($id_jadwal) function at dokter_model.php
+* added route schedule($id_dokter) at dokter.php
+* added get_schedule($id_dokter) at dokter.php
+* added get_schedule_by_id($id_jadwal) at dokter.php
+* added dataTable javascript function at template.php for getting data into table
+* added pesan_jadwal(id) javascript function at template.php
+
+
+### Changed
+
 ## [Unreleased] - 2020-04-23
 
 ### Added
