@@ -25,6 +25,32 @@ class dokter_model extends CI_Model {
       ->result_array();
   }
 
+  public function get_schedule($id_dokter)
+  {
+    return $this->db->select('id_jadwal, nama_rs, waktu_mulai, estimasi_durasi')
+                    ->from('tb_jadwal')
+                    ->join('tb_rs', 'tb_rs.id_rs = tb_jadwal.id_rs')
+                    ->join('tb_dokter', 'tb_dokter.id_dokter = tb_jadwal.id_dokter')
+                    ->where('tb_jadwal.id_dokter', $id_dokter)
+                    ->where('tb_jadwal.delete_status', 'false')
+                    ->where('tb_rs.delete_status', 'false')
+                    ->get()
+                    ->result();
+  }
+
+  public function get_schedule_by_id($id_jadwal)
+  {
+    return $this->db->select('id_jadwal, nama_rs, nama_dokter, waktu_mulai, estimasi_durasi')
+                    ->from('tb_jadwal')
+                    ->join('tb_rs', 'tb_rs.id_rs = tb_jadwal.id_rs')
+                    ->join('tb_dokter', 'tb_dokter.id_dokter = tb_jadwal.id_dokter')
+                    ->where('id_jadwal', $id_jadwal)
+                    ->where('tb_jadwal.delete_status', 'false')
+                    ->where('tb_rs.delete_status', 'false')
+                    ->get()
+                    ->row();
+  }
+
   public function insert_data_dokter($data)
   {
     $this->db->insert('tb_dokter', $data);

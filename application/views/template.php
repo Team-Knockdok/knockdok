@@ -94,6 +94,48 @@
     <script>
         $(document).ready( function () {
             $('#dataTable').DataTable();
+            <?php 
+                if ($this->uri->segment(2) == "schedule") {
+                    echo '
+                        $("#dataTableJadwal").DataTable({
+                        "searching" : false,
+                        "ajax" : {
+                            "url" : "'.base_url().'dokter/get_schedule/'.$data_dokter["id_dokter"].'",
+                            "type" : "GET",
+                            "dataSrc" : ""
+                        },
+                        "columns" : [
+                            {
+                                "data" : "nama_rs"
+                            }, 
+                            {
+                                "data" : "waktu_mulai"
+                            }, 
+                            {
+                                "data" : "estimasi_durasi"
+                            },
+                            {
+                                "data" : "id_jadwal",
+                                render: function (dataField) { 
+                                    return '.'\'<button type="button" class="btn btn-info" data-toggle="modal" data-target="#pesanmodal" onclick="pesan_jadwal(\'+dataField+\')">Pesan</button>\'; 
+                                }
+                            }
+                        ]
+                    });
+                    ';
+                }
+            ?>
+            
         } );
+
+        function pesan_jadwal(id) {
+            $.getJSON('<?= base_url() ?>dokter/get_schedule_by_id/'+id, function (data) {
+                $('#nama_dokter').text(data.nama_dokter)
+                $('#nama_rs').text(data.nama_rs)
+                $('#jadwal').text(data.waktu_mulai)
+                $('#durasi').text(data.estimasi_durasi)
+                $('#form_pesan_jadwal').attr('href', '<?= base_url() ?>dokter/...');
+            })
+        }
     </script>
 </html>

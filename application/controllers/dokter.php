@@ -7,7 +7,7 @@ class Dokter extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('dokter_model');
-	} 
+	}
 
 	public function profil($id)
 	{
@@ -16,6 +16,29 @@ class Dokter extends CI_Controller {
 		$data['dokter'] = $this->dokter_model->getById($id);
 		$data['list_rs'] = $this->dokter_model->getRsById($id);
 		$this->load->view('template', $data);
+	}
+
+	public function schedule($id_dokter)
+	{
+		if ($this->session->userdata('logged_in') == TRUE) {
+			$data['data_dokter'] = $this->dokter_model->getById($id_dokter);
+			$data['main_view'] = 'jadwal_pemeriksaan_view';
+			$this->load->view('template', $data);
+		} else {
+			$this->session->set_flashdata('failed', 'session login telah habis, silahkan login kembali!');
+            redirect('auth');
+		}
+		
+	}
+
+	public function get_schedule($id_dokter)
+	{
+		echo json_encode($this->dokter_model->get_schedule($id_dokter));
+	}
+
+	public function get_schedule_by_id($id_jadwal)
+	{
+		echo json_encode($this->dokter_model->get_schedule_by_id($id_jadwal));
 	}
 
 	public function add_data_dokter()
