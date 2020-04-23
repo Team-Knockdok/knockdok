@@ -123,7 +123,47 @@ class Dokter extends CI_Controller {
 		
 	}
 
+	public function make_schedule()
+	{
+		$this->form_validation->set_rules('waktu_mulai', 'Waktu Mulai', 'required');
+		$this->form_validation->set_rules('estimasi_durasi', 'Estimasi Durasi', 'required');
+		$this->form_validation->set_rules('id_dokter', 'Dokter', 'required');
+		$this->form_validation->set_rules('id_rs', 'Rumah Sakit', 'required');
 
+		$data = array(
+			'waktu_mulai' => $this->input->post('waktu_mulai'), 
+			'estimasi_durasi' => $this->input->post('estimasi_durasi'), 
+			'id_dokter' => $this->input->post('id_dokter'), 
+			'id_rs' => $this->input->post('id_rs'), 
+			'delete_status' => 'false'
+		);
+
+		if ($this->form_validation->run() == TRUE) {
+			if ($this->dokter_model->add_schedule($data) == TRUE) {
+				// activate this if you have the view to show this notification
+                // $this->session->set_flashdata('success', 'tambah jadwal pemeriksaan berhasil!');
+				// redirect('');
+				
+				// unactivate this if you already have the view
+				echo json_encode('POST Success');
+			} else {
+				// activate this if you have the view to show this notification
+                // $this->session->set_flashdata('success', 'tambah jadwal pemeriksaan gagal!');
+				// redirect('');
+
+				// unactivate this if you already have the view
+				echo json_encode('POST failed');
+			}	
+		} else {
+			// activate this if you have the view to show this notification
+            // $this->session->set_flashdata('failed', validation_errors());
+            // redirect('');
+
+			// unactivate this if you already have the view
+            echo json_encode(validation_errors());
+		}
+		
+	}
 
 }
 

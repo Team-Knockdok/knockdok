@@ -60,6 +60,18 @@ class dokter_model extends CI_Model {
     
   }
 
+  public function add_schedule($data)
+  {
+    $this->db->insert('tb_jadwal', $data);
+    
+    if ($this->db->affected_rows() > 0) {
+      return TRUE;
+    } else {
+      return FALSE;
+    }
+    
+  }
+
 }
 
 ?>
