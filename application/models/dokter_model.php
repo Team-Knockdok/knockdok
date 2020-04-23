@@ -25,6 +25,18 @@ class dokter_model extends CI_Model {
       ->result_array();
   }
 
+  public function insert_data_dokter($data)
+  {
+    $this->db->insert('tb_dokter', $data);
+    
+    if ($this->db->affected_rows() > 0) {
+      return TRUE;
+    } else {
+      return FALSE;
+    }
+    
+  }
+
 }
 
 ?>
