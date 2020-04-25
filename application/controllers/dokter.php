@@ -8,6 +8,7 @@ class Dokter extends CI_Controller {
 		parent::__construct();
 		$this->load->model('dokter_model');
 		$this->load->model('pesanan_model');
+		$this->load->model('jadwal_model');
 	}
 
 	public function profil($id)
@@ -59,12 +60,12 @@ class Dokter extends CI_Controller {
 
 	public function get_schedule($id_dokter)
 	{
-		echo json_encode($this->dokter_model->get_schedule($id_dokter));
+		echo json_encode($this->jadwal_model->get_tersedia($id_dokter));
 	}
 
 	public function get_schedule_by_id($id_jadwal)
 	{
-		echo json_encode($this->dokter_model->get_schedule_by_id($id_jadwal));
+		echo json_encode($this->jadwal_model->get_by_id($id_jadwal));
 	}
 
 	public function add_data_dokter()
