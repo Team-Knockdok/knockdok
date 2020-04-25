@@ -7,6 +7,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.4.0] - 2020-04-25
+
+### Added
+
+* jadwal model
+* update pesanan controller
+* update_keluhan, get_keluhan, get_sudah_transaksi in pesanan model
+
+### Changed
+
+* checkout pesanan controller
+* api dokter is now using jadwal model
+* riwayat user is now using jadwal model
+* insert in transaksi model
+* moved ajax call from template to jadwal view
+* pesanan view can edit keluhan
+* profil_dokter, profil_rs view
+* riwayat view
+
+### Removed
+
+* Material Bootstrap styles
+
 ## [0.3.0] - 2020-04-25
 
 ### Added
