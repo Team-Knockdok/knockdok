@@ -94,9 +94,6 @@
     <script type="text/javascript" charset="utf8" src="<?= base_url() ?>assets/vendor/DataTables/DataTables/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="<?= base_url('assets/vendor/materialDesign/js/mdb.min.js') ?>"></script>
     <script>
-        $(document).ready(() => {
-            $('#dataTable').DataTable();
-        });
     </script>
 </body>
 </html>
