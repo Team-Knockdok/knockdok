@@ -29,8 +29,8 @@ class dokter_model extends CI_Model {
   {
     return $this->db->select('id_jadwal, nama_rs, waktu_mulai, estimasi_durasi')
                     ->from('tb_jadwal')
-                    ->join('tb_rs', 'tb_rs.id_rs = tb_jadwal.id_rs')
-                    ->join('tb_dokter', 'tb_dokter.id_dokter = tb_jadwal.id_dokter')
+                    ->join('tb_rs', 'id_rs')
+                    ->join('tb_dokter', 'id_dokter')
                     ->where('tb_jadwal.id_dokter', $id_dokter)
                     ->where('tb_jadwal.delete_status', 'false')
                     ->where('tb_rs.delete_status', 'false')
@@ -50,19 +50,19 @@ class dokter_model extends CI_Model {
   public function add_data_pesanan($data)
   {
     $this->db->insert('tb_pesanan', $data);
-    
+
     if ($this->db->affected_rows() > 0) {
       return TRUE;
     } else {
       return FALSE;
     }
-    
+
   }
 
   public function add_data_transaksi($data)
   {
     $this->db->insert('tb_transaksi', $data);
-    
+
     if ($this->db->affected_rows() > 0) {
       return TRUE;
     } else {
@@ -74,7 +74,7 @@ class dokter_model extends CI_Model {
   {
     $this->db->where('id_pemesanan', $id)
             ->delete('tb_pesanan');
-    
+
     if ($this->db->affected_rows() > 0) {
       return TRUE;
     } else {
@@ -86,8 +86,8 @@ class dokter_model extends CI_Model {
   {
     return $this->db->select('id_jadwal, nama_rs, nama_dokter, waktu_mulai, estimasi_durasi')
                     ->from('tb_jadwal')
-                    ->join('tb_rs', 'tb_rs.id_rs = tb_jadwal.id_rs')
-                    ->join('tb_dokter', 'tb_dokter.id_dokter = tb_jadwal.id_dokter')
+                    ->join('tb_rs', 'id_rs')
+                    ->join('tb_dokter', 'id_dokter')
                     ->where('id_jadwal', $id_jadwal)
                     ->where('tb_jadwal.delete_status', 'false')
                     ->where('tb_rs.delete_status', 'false')
@@ -98,19 +98,19 @@ class dokter_model extends CI_Model {
   public function insert_data_dokter($data)
   {
     $this->db->insert('tb_dokter', $data);
-    
+
     if ($this->db->affected_rows() > 0) {
       return TRUE;
     } else {
       return FALSE;
     }
-    
+
   }
 
   public function delete_data_dokter($id_dokter) {
 
     $this->db->where('id_dokter', $id_dokter)->delete('tb_dokter');
-    
+
     if ($this->db->affected_rows() > 0) {
       return TRUE;
     } else {
@@ -121,25 +121,25 @@ class dokter_model extends CI_Model {
   public function daftar_rs($data)
   {
     $this->db->insert('tb_pivot_dokter_rs', $data);
-    
+
     if ($this->db->affected_rows() > 0) {
       return TRUE;
     } else {
       return FALSE;
     }
-    
+
   }
 
   public function add_schedule($data)
   {
     $this->db->insert('tb_jadwal', $data);
-    
+
     if ($this->db->affected_rows() > 0) {
       return TRUE;
     } else {
       return FALSE;
     }
-    
+
   }
 
 }

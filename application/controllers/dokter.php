@@ -7,6 +7,7 @@ class Dokter extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('dokter_model');
+		$this->load->model('pesanan_model');
 	}
 
 	public function profil($id)
@@ -22,13 +23,13 @@ class Dokter extends CI_Controller {
 	{
 		if ($this->session->userdata('logged_in') == TRUE) {
 			$data['data_dokter'] = $this->dokter_model->getById($id_dokter);
-			$data['main_view'] = 'jadwal_pemeriksaan_view';
+			$data['main_view'] = 'jadwal_view';
 			$this->load->view('template', $data);
 		} else {
 			$this->session->set_flashdata('failed', 'session login telah habis, silahkan login kembali!');
-            redirect('auth');
+    	redirect('auth');
 		}
-		
+
 	}
 
 	public function pesan_schedule($id_jadwal)
@@ -39,36 +40,21 @@ class Dokter extends CI_Controller {
 			'id_jadwal' => $id_jadwal,
 			'tanggal_pemesanan' => date('Y-m-d')
 		);
-		if ($this->session->userdata('logged_in') == TRUE) {
-			if ($this->dokter_model->add_data_pesanan($data_pesanan) == TRUE) {
+		if ($this->session->userdata('logged_in')) {
 
-				$data = $this->dokter_model->get_pesanan_by_id($id_jadwal, $this->session->userdata('username'));
-
-				$data_transaksi = array(
-					'username' => $this->session->userdata('username'), 
-					'status_bayar' => 'pending',
-					'rincian_biaya' => '45000',
-					'id_pesanan' => $data['id_pesanan']
-				);
-
-				if ($this->dokter_model->add_data_transaksi($data_transaksi) == TRUE) {
-					$this->session->set_flashdata('success', 'Tambah Data Pesanan Berhasil!');
-					redirect($_SERVER['HTTP_REFERER']);	
-				} else {
-					$this->dokter_model->delete_data_pesanan($data['id_pesanan']);
-					$this->session->set_flashdata('failed', 'Tambah Pesanan Gagal! Silahkan Coba Lagi');
-					redirect($_SERVER['HTTP_REFERER']);
-				}
+			if ($this->pesanan_model->insert($data_pesanan)) {
+				$this->session->set_flashdata('success', 'Tambah Data Pesanan Berhasil!');
+				redirect($_SERVER['HTTP_REFERER']);
 			} else {
 				$this->session->set_flashdata('failed', 'Tambah Pesanan Gagal! Silahkan Coba Lagi');
 				redirect($_SERVER['HTTP_REFERER']);
 			}
-			
+
 		} else {
 			$this->session->set_flashdata('failed', 'session login telah habis, silahkan login kembali!');
-            redirect('auth');
+      redirect('auth');
 		}
-		
+
 	}
 
 	public function get_schedule($id_dokter)
@@ -88,30 +74,30 @@ class Dokter extends CI_Controller {
 		$this->form_validation->set_rules('nomor_telepon', 'Nomor Telepon', 'required|max_length[12]');
 		$this->form_validation->set_rules('alamat_dokter', 'Alamat', 'required|max_length[150]');
 		$this->form_validation->set_rules('email', 'Email', 'required|max_length[150]');
-		
-		
+
+
 		if ($this->form_validation->run() == TRUE) {
 			$path = './uploads/dokter/';
 			$config['upload_path'] = $path;
 			$config['allowed_types'] = 'jpg|png';
 			$config['max_size']  = '100000';
-			
+
 			$this->load->library('upload', $config);
-			
+
 			if ($this->upload->do_upload('foto_dokter') == TRUE) {
 				$data = array(
-					'nama_dokter' => $this->input->post('nama_dokter'),
-					'spesialis' => $this->input->post('spesialis'),
+					'nama_dokter' 	=> $this->input->post('nama_dokter'),
+					'spesialis' 		=> $this->input->post('spesialis'),
 					'nomor_telepon' => $this->input->post('nomor_telepon'),
 					'alamat_dokter' => $this->input->post('alamat_dokter'),
-					'email' => $this->input->post('email'),
-					'foto_dokter' => $this->upload->data()['file_name']
+					'email' 				=> $this->input->post('email'),
+					'foto_dokter' 	=> $this->upload->data()['file_name']
 				);
 				if ($this->dokter_model->insert_data_dokter($data) == TRUE) {
 					// activate this if you have the view to show this notification
                     // $this->session->set_flashdata('success', 'tambah data dokter berhasil!');
 					// redirect('');
-					
+
                     echo json_encode('POST Success');
 				} else {
 					unlink($path.$this->upload->data()['file_name']);
@@ -125,11 +111,11 @@ class Dokter extends CI_Controller {
 				// activate this if you have the view to show this notification
                 // $this->session->set_flashdata('failed', $this->upload->display_errors());
 				// redirect('');
-				
+
 				// unactivate this if you already have the view
 				echo json_encode($this->upload->display_errors());
 			}
-			
+
 		} else {
 			// activate this if you have the view to show this notification
             // $this->session->set_flashdata('failed', validation_errors());
@@ -138,7 +124,7 @@ class Dokter extends CI_Controller {
 			// unactivate this if you already have the view
             echo json_encode(validation_errors());
 		}
-		
+
 	}
 
 	public function hapus_data_dokter($id_dokter)
@@ -172,7 +158,7 @@ class Dokter extends CI_Controller {
 			// activate this if you have the view to show this notification
             // $this->session->set_flashdata('failed', 'Daftar Rumah Sakit Berhasil! Silahkan coba lagi');
 			// redirect('');
-			
+
 			// unactivate this if you already have the view
             echo json_encode('POST success');
 		} else {
@@ -183,7 +169,7 @@ class Dokter extends CI_Controller {
             // unactivate this if you already have the view
             echo json_encode('POST failed');
 		}
-		
+
 	}
 
 	public function make_schedule()
@@ -194,10 +180,10 @@ class Dokter extends CI_Controller {
 		$this->form_validation->set_rules('id_rs', 'Rumah Sakit', 'required');
 
 		$data = array(
-			'waktu_mulai' => $this->input->post('waktu_mulai'), 
-			'estimasi_durasi' => $this->input->post('estimasi_durasi'), 
-			'id_dokter' => $this->input->post('id_dokter'), 
-			'id_rs' => $this->input->post('id_rs'), 
+			'waktu_mulai' => $this->input->post('waktu_mulai'),
+			'estimasi_durasi' => $this->input->post('estimasi_durasi'),
+			'id_dokter' => $this->input->post('id_dokter'),
+			'id_rs' => $this->input->post('id_rs'),
 			'delete_status' => 'false'
 		);
 
@@ -206,7 +192,7 @@ class Dokter extends CI_Controller {
 				// activate this if you have the view to show this notification
                 // $this->session->set_flashdata('success', 'tambah jadwal pemeriksaan berhasil!');
 				// redirect('');
-				
+
 				// unactivate this if you already have the view
 				echo json_encode('POST Success');
 			} else {
@@ -216,7 +202,7 @@ class Dokter extends CI_Controller {
 
 				// unactivate this if you already have the view
 				echo json_encode('POST failed');
-			}	
+			}
 		} else {
 			// activate this if you have the view to show this notification
             // $this->session->set_flashdata('failed', validation_errors());
@@ -225,7 +211,7 @@ class Dokter extends CI_Controller {
 			// unactivate this if you already have the view
             echo json_encode(validation_errors());
 		}
-		
+
 	}
 
 }
