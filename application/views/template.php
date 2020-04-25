@@ -7,6 +7,10 @@
     <link rel="stylesheet" type="text/css" href="<?= base_url() ?>assets/vendor/DataTables/datatables.css">
     <link rel="stylesheet" type="text/css" href="<?= base_url() ?>assets/vendor/DataTables/DataTables/css/jquery.dataTables.min.css">
     <title>KnockDok</title>
+    <link rel="stylesheet" href="<?= base_url('assets/vendor/materialDesign/css/mdb.min.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/vendor/materialDesign/css/style.css') ?>">
+    <!-- JQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
 </head>
 
 <body>
@@ -27,7 +31,7 @@
                     if ($this->session->userdata('logged_in')) {
                         echo '
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Pembayaran</a>
+                            <a class="nav-link" href="'.base_url().'pesanan">Pesanan</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#akun" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Akun</a>
@@ -85,19 +89,17 @@
         ?>
         <?php $this->load->view($main_view); ?>
     </div>
-
-</body>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script type="text/javascript" charset="utf8" src="<?= base_url() ?>assets/vendor/DataTables/datatables.js"></script>
     <script type="text/javascript" charset="utf8" src="<?= base_url() ?>assets/vendor/DataTables/DataTables/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="<?= base_url('assets/vendor/materialDesign//js/mdb.min.js') ?>"></script>
     <script>
         $(document).ready( function () {
             $('#dataTable').DataTable();
-            <?php 
+            <?php
                 if ($this->uri->segment(2) == "schedule") {
                     echo '
-                        $("#dataTableJadwal").DataTable({
+                    $("#dataTableJadwal").DataTable({
                         "searching" : false,
                         "ajax" : {
                             "url" : "'.base_url().'dokter/get_schedule/'.$data_dokter["id_dokter"].'",
@@ -105,27 +107,21 @@
                             "dataSrc" : ""
                         },
                         "columns" : [
-                            {
-                                "data" : "nama_rs"
-                            }, 
-                            {
-                                "data" : "waktu_mulai"
-                            }, 
-                            {
-                                "data" : "estimasi_durasi"
-                            },
+                            { "data" : "nama_rs" },
+                            { "data" : "waktu_mulai" },
+                            { "data" : "estimasi_durasi" },
                             {
                                 "data" : "id_jadwal",
-                                render: function (dataField) { 
-                                    return '.'\'<button type="button" class="btn btn-info" data-toggle="modal" data-target="#pesanmodal" onclick="pesan_jadwal(\'+dataField+\')">Pesan</button>\'; 
+                                render: function (dataField) {
+                                    return '.'\'<button type="button" class="btn btn-info" data-toggle="modal" data-target="#pesanmodal" onclick="pesan_jadwal(\'+dataField+\')">Pesan</button>\';
                                 }
                             }
-                        ]
-                    });
-                    ';
-                }
-            ?>
-            
+                            ]
+                        });
+                        ';
+                    }
+                    ?>
+
         } );
 
         function pesan_jadwal(id) {
@@ -138,4 +134,5 @@
             })
         }
     </script>
+</body>
 </html>
