@@ -23,7 +23,7 @@
                                 <td>'.$data["nama_dokter"].'</td>
                                 <td>'.$data["nama_rs"].'</td>
                                 <td>'.$data["waktu_transaksi"].'</td>
-                                <td>'.$data["rincian_biaya"].'</td>
+                                <td>'.$data["biaya"].'</td>
                                 <td>
                                     <button class="btn btn-info" data-toggle="modal" data-target="#keluhan-modal">
                                         Lihat
