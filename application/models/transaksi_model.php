@@ -4,9 +4,12 @@
 
   class Transaksi_model extends CI_Model {
 
-    public function insert($biaya)
+    public function insert()
     {
-      $this->db->insert('tb_transaksi', $biaya);
+      $data = array(
+        'status_bayar' => 'pending'
+      );
+      $this->db->insert('tb_transaksi', $data);
       if ( $this->db->affected_rows() <= 0 )
         return -1; // Insert into tb_transaksi gagal, return id -1 which imposible number of id
       return $this->db->insert_id();
