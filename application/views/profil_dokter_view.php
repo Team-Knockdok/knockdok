@@ -22,18 +22,20 @@
             <td><span class="emerald pr-4">Alamat</span></td>
             <td><?= $dokter["alamat_dokter"] ?></td>
           </tr>
-          <tr class="text-center">
-            <td colspan="2"><button class="btn btn-info">Pesan Jadwal</button></td>
-          </tr>
         </tbody>
       </table>
+      <div class="col-sm-12 col-md-8 col-lg-4 mx-auto">
+        <a href="<?= base_url().'dokter/schedule/'.$dokter['id_dokter'] ?>" class="form-control btn btn-info">
+          <div>Pesan Jadwal</div>
+        </a>
+      </div>
     </div>
   </div>
   <div class="col">
     <h2 class="emerald pt-5">Tempat Praktek</h2><br />
     <div class="card-deck">
     <?php foreach ($list_rs as $rs): ?>
-      <div class="card col-md-3">
+      <div class="card col-sm-5 col-md-5 col-lg-3 ">
         <div class="card-body">
           <a href="<?= base_url()."rs/profil/".$rs["id_rs"] ?>">
             <center>

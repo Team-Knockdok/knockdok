@@ -27,10 +27,10 @@
           </a>
         </div>
         <div class="card-footer text-center">
-          <button type="submit" class="form-control btn btn-info col-sm-8">
+          <a href="<?= base_url() ?>dokter/schedule/<?= $dokter['id_dokter'] ?>" class="form-control btn btn-info col-sm-8">
             Pesan
-          </button>
-      </div>
+          </a>
+        </div>
       </div>
     <?php endforeach; ?>
   </div>
