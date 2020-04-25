@@ -4,7 +4,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Pembayaran extends CI_Controller {
 
-
   public function __construct()
   {
     parent::__construct();
@@ -49,6 +48,18 @@ class Pembayaran extends CI_Controller {
       redirect('pembayaran');
     }
     redirect('user/riwayat');
+  }
+
+  public function update($id_transaksi)
+  {
+    $status = $this->input->post('status');
+    if (!$this->transaksi_model->update_status_bayar($id_transaksi, $status)) {
+      echo json_encode('Update failed!');
+    }
+    echo json_encode(array(
+      'status' => 200,
+      'data' => $this->transaksi_model->get_by_id($id_transaksi)
+    ));
   }
 
 }
