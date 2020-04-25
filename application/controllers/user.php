@@ -28,10 +28,11 @@ class User extends CI_Controller {
 
     public function riwayat()
     {
-        if ($this->session->userdata('logged_in') == TRUE) {
+        if ($this->session->userdata('logged_in')) {
+            $this->load->model('pesanan_model');
             $data['main_view'] = 'riwayat_view';
             $username = $this->session->userdata('username');
-            $data['data_riwayat'] = $this->user_model->get_data_riwayat_by_username($username);
+            $data['data_riwayat'] = $this->pesanan_model->get_sudah_transaksi($username);
             $this->load->view('template', $data);
         } else {
             $this->session->set_flashdata('failed', 'session login telah habis, silahkan login kembali!');
@@ -48,7 +49,7 @@ class User extends CI_Controller {
 		$this->form_validation->set_rules('alamat', 'Alamat', 'required|min_length[10]|max_length[100]');
 		$this->form_validation->set_rules('email', 'Email', 'required|max_length[35]|valid_email');
         $this->form_validation->set_rules('nomor_telepon', 'Nomor telepon', 'required|min_length[12]|max_length[12]');
-        
+
         $username = $this->session->userdata('username');
 
         $data = array(
@@ -57,7 +58,7 @@ class User extends CI_Controller {
             'password' => $this->input->post('password'),
             'alamat' => $this->input->post('alamat'),
             'email' => $this->input->post('email'),
-            'nomor_telepon' => $this->input->post('nomor_telepon') 
+            'nomor_telepon' => $this->input->post('nomor_telepon')
         );
 
         if ($this->session->userdata('logged_in') == TRUE) {
@@ -69,31 +70,31 @@ class User extends CI_Controller {
                     $this->session->set_flashdata('failed', 'Ubah Data Profil Gagal! Silahkan Coba Lagi!');
                     redirect('user');
                 }
-                
+
             } else {
                 $this->session->set_flashdata('failed', validation_errors());
                 redirect('user');
             }
-            
+
         } else {
             $this->session->set_flashdata('failed', 'session login telah habis, silahkan login kembali!');
             redirect('auth');
         }
-        
+
     }
 
     public function edit_profile_picture($file_image){
         $username = $this->session->userdata('username');
-        
+
         if ( $this->session->userdata('logged_in') == TRUE) {
-            
+
             $path = './uploads/users/';
             $config['upload_path'] = $path;
             $config['allowed_types'] = 'jpg|png';
             $config['max_size']  = '100000';
-            
+
             $this->load->library('upload', $config);
-            
+
             if ($this->upload->do_upload('foto_profil')){
                 $image = $this->upload->data();
                 $data = array('foto_profil' => $image['file_name']);
@@ -107,13 +108,13 @@ class User extends CI_Controller {
                 $this->session->set_flashdata('failed', $this->upload->display_errors());
                 redirect('user');
             }
-            
+
         } else {
             $this->session->set_flashdata('failed', 'session login telah habis, silahkan login kembali!');
             redirect('auth');
         }
-        
-    
+
+
     }
 }
 
