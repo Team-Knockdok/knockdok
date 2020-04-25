@@ -5,9 +5,29 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+## [0.3.0] - 2020-04-25
+
+### Added
+
+* dummy bukti pembayaran
+* material bootstrap vendor
+* pesanan mvc
+* pembayaran vc
+* transaksi model
+* db sql
+
+### Changed
+
+* dokter mc
+* jadwal_pemesanan_view to jadwal_view
+* navbar route
+
 ## [Unreleased] - 2020-04-24
 
 ### Added
+
 * added jadwal_pemeriksaan_view.php
 * added get_schedule($id_dokter) function at dokter_model.php
 * added get_schedule_by_id($id_jadwal) function at dokter_model.php
@@ -22,12 +42,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * added add_data_transaksi($data_transaksi) at dokter_model.php
 * added delete_data_pesanan() at dokter_model.php
 
-
-### Changed
-
 ## [Unreleased] - 2020-04-23
 
 ### Added
+
 * added add_data_dokter() function at dokter.php
 * added insert_data_dokter($data) at dokter_model.php
 * added hapus_data_dokter($id_dokter) at dokter.php
