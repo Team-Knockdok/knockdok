@@ -26,11 +26,24 @@ class User extends CI_Controller {
         }
     }
 
-    public function riwayat()
+    public function riwayat_transaksi()
+    {
+        
+
+        if ($this->session->userdata('logged_in')) {
+            $data['main_view'] = 'riwayat_transaksi_view';
+            $this->load->view('template', $data);
+        } else {
+            $this->session->set_flashdata('failed', 'session login telah habis, silahkan login kembali!');
+            redirect('auth');
+        }
+    }
+
+    public function riwayat_detail_pemesanan($id_transaksi)
     {
         if ($this->session->userdata('logged_in')) {
             $this->load->model('pesanan_model');
-            $data['main_view'] = 'riwayat_view';
+            $data['main_view'] = 'riwayat_pemesanan_view';
             $username = $this->session->userdata('username');
             $data['data_riwayat'] = $this->pesanan_model->get_sudah_transaksi($username);
             $this->load->view('template', $data);
@@ -38,6 +51,16 @@ class User extends CI_Controller {
             $this->session->set_flashdata('failed', 'session login telah habis, silahkan login kembali!');
             redirect('auth');
         }
+    }
+
+    public function get_riwayat_transaksi()
+    {
+        echo json_encode($this->user_model->get_riwayat_transaksi());
+    }
+
+    public function get_bukti_pembayaran_by_id($id)
+    {
+        echo json_encode($this->user_model->get_bukti_pembayaran_by_id($id));
     }
 
     public function edit_data_profile()

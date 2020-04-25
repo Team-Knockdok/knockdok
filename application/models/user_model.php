@@ -38,6 +38,25 @@ class User_model extends CI_Model {
         }
     }
 
+    public function get_riwayat_transaksi()
+    {
+        return $this->db->select('tb_transaksi.id_transaksi as id_transaksi, waktu_transaksi, status_bayar, SUM(biaya) as total_biaya, bukti_pembayaran')
+                        ->from('tb_transaksi')
+                        ->join('tb_pesanan', 'tb_pesanan.id_transaksi = tb_transaksi.id_transaksi')
+                        ->join('tb_jadwal', 'tb_jadwal.id_jadwal = tb_pesanan.id_jadwal')
+                        ->where('username', $this->session->userdata('username'))
+                        ->get()
+                        ->result();
+    }
+
+    public function get_bukti_pembayaran_by_id($id_transaksi)
+    {
+        return $this->db->where('id_transaksi', $id_transaksi)
+                        ->get('tb_transaksi')
+                        ->row();
+        
+    }
+
 }
 
 /* End of file User_model.php */
