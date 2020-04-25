@@ -4,6 +4,14 @@
 
   class Transaksi_model extends CI_Model {
 
+    public function get_by_id($id)
+    {
+      return $this->db
+        ->where('id_transaksi', $id)
+        ->get('tb_transaksi')
+        ->row();
+    }
+
     public function insert()
     {
       $data = array(
@@ -24,6 +32,14 @@
         ->where('id_transaksi', $id)
         ->update('tb_transaksi', $data);
 
+    }
+
+    public function update_status_bayar($id, $status)
+    {
+      $data = array( 'status_bayar' => $status );
+      return $this->db
+        ->where('id_transaksi', $id)
+        ->update('tb_transaksi', $data);
     }
 
   }
