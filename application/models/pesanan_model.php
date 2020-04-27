@@ -16,17 +16,16 @@ class Pesanan_model extends CI_Model {
       ->result_array();
   }
 
-  public function get_sudah_transaksi($username) {
-    return $this->db
-      ->select('nama_dokter, nama_rs, waktu_transaksi, biaya')
-      ->from('tb_pesanan')
-      ->join('tb_transaksi', 'id_transaksi')
-      ->join('tb_jadwal', 'id_jadwal')
-      ->join('tb_dokter', 'id_dokter')
-      ->join('tb_rs', 'id_rs')
-      ->where('username', $username)
-      ->get()
-      ->result_array();
+  public function get_detail_pemesanan($id_transaksi) {
+    return $this->db->select('id_pesanan, nama_dokter, nama_rs, tanggal_pemesanan, biaya')
+                    ->from('tb_pesanan')
+                    ->join('tb_jadwal', 'tb_jadwal.id_jadwal = tb_pesanan.id_jadwal')
+                    ->join('tb_dokter', 'tb_dokter.id_dokter = tb_jadwal.id_dokter')
+                    ->join('tb_rs', 'tb_rs.id_rs = tb_jadwal.id_rs')
+                    ->where('id_transaksi', $id_transaksi)
+                    ->get()
+                    ->result();
+    
   }
 
   public function get_keluhan($id) {
