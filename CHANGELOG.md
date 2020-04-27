@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 * changed navbar route to riwayat_transaksi
+* changed redirect route in pembayaran.php from riwayat into riwayat_transaksi
 
 ### Removed
 
