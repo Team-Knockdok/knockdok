@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 * added get_detail_pemesanan() at pesanan_model.php
+* added document ready js function at jadwal_view.php
 
 ### Changed
 * changed navbar route to riwayat_transaksi
