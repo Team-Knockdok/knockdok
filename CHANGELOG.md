@@ -8,12 +8,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+* added get_detail_pemesanan() at pesanan_model.php
 
 ### Changed
 * changed navbar route to riwayat_transaksi
 * changed redirect route in pembayaran.php from riwayat into riwayat_transaksi
 
 ### Removed
+* removed get_sudah_transaksi() function at pesanan_model
 
 ## [0.4.0] - 2020-04-25
 
