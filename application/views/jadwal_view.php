@@ -56,32 +56,32 @@
     </div>
 </div>
 <script>
-    <?php
-        echo '
-        $("#dataTableJadwal").DataTable({
-            "searching" : false,
-            "ajax" : {
-                "url" : "'.base_url().'dokter/get_schedule/'.$data_dokter["id_dokter"].'",
-                "type" : "GET",
-                "dataSrc" : ""
-            },
-            "columns" : [
-                { "data" : "nama_rs" },
-                { "data" : "waktu_mulai" },
-                { "data" : "estimasi_durasi" },
-                {
-                    "data" : "id_jadwal",
-                    render: function (dataField) {
-                        return '.'\'<button type="button" class="btn btn-info" data-toggle="modal" data-target="#pesanmodal" onclick="pesan_jadwal(\'+dataField+\')">Pesan</button>\';
+    $(document).ready(() => {
+        <?php
+            echo '
+            $("#dataTableJadwal").DataTable({
+                "searching" : false,
+                "ajax" : {
+                    "url" : "'.base_url().'dokter/get_schedule/'.$data_dokter["id_dokter"].'",
+                    "type" : "GET",
+                    "dataSrc" : ""
+                },
+                "columns" : [
+                    { "data" : "nama_rs" },
+                    { "data" : "waktu_mulai" },
+                    { "data" : "estimasi_durasi" },
+                    {
+                        "data" : "id_jadwal",
+                        render: function (dataField) {
+                            return '.'\'<button type="button" class="btn btn-info" data-toggle="modal" data-target="#pesanmodal" onclick="pesan_jadwal(\'+dataField+\')">Pesan</button>\';
+                        }
                     }
-                }
-            ]
-        });
-        ';
-    ?>
+                ]
+            });
+            ';
+        ?>
 
-    } );
-
+    });
     function pesan_jadwal(id) {
         $.getJSON('<?= base_url() ?>dokter/get_schedule_by_id/'+id, function (data) {
             console.log(data);
