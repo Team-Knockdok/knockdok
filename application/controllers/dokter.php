@@ -88,10 +88,10 @@ class Dokter extends CI_Controller {
 			if ($this->upload->do_upload('foto_dokter') == TRUE) {
 				$data = array(
 					'nama_dokter' 	=> $this->input->post('nama_dokter'),
-					'spesialis' 		=> $this->input->post('spesialis'),
+					'spesialis' 	=> $this->input->post('spesialis'),
 					'nomor_telepon' => $this->input->post('nomor_telepon'),
 					'alamat_dokter' => $this->input->post('alamat_dokter'),
-					'email' 				=> $this->input->post('email'),
+					'email' 		=> $this->input->post('email'),
 					'foto_dokter' 	=> $this->upload->data()['file_name']
 				);
 				if ($this->dokter_model->insert_data_dokter($data) == TRUE) {
@@ -181,11 +181,12 @@ class Dokter extends CI_Controller {
 		$this->form_validation->set_rules('id_rs', 'Rumah Sakit', 'required');
 
 		$data = array(
-			'waktu_mulai' => $this->input->post('waktu_mulai'),
-			'estimasi_durasi' => $this->input->post('estimasi_durasi'),
-			'id_dokter' => $this->input->post('id_dokter'),
-			'id_rs' => $this->input->post('id_rs'),
-			'delete_status' => 'false'
+			'waktu_mulai' 			=> $this->input->post('waktu_mulai'),
+			'estimasi_durasi' 		=> $this->input->post('estimasi_durasi'),
+			'id_dokter' 			=> $this->input->post('id_dokter'),
+			'id_rs' 				=> $this->input->post('id_rs'),
+			'delete_status' 		=> 'false',
+			'tersedia'				=> '1'
 		);
 
 		if ($this->form_validation->run() == TRUE) {

@@ -58,10 +58,15 @@
     			{
     				"data": "id_transaksi",
     				render: function (dataField) {
+                        var data_upload = $.get("<?= base_url() ?>user/get_bukti_pembayaran_by_id/" + dataField);
     					var html = '';
-                        html += '<button type="button" class="btn btn-info" data-toggle="modal" data-target="#modalBuktiPembayaran" onclick="buktiPembayaran(' + dataField + ')">Bukti Pembayaran</button>';    
-                        html += '<a href="<?= base_url() ?>pembayaran" class="btn btn-info ml-2">Upload Bukti Pembayaran</a>';
-    					html += '<a href="<?= base_url() ?>user/riwayat_detail_pemesanan/'+dataField+'" class="btn btn-info ml-2">Detail Transaksi</a>';
+                        if (data_upload == null) {
+                            html += '<a href="<?= base_url() ?>pembayaran" onclick="set_session_transaksi('+dataField+')" class="btn btn-info ml-2">Upload Bukti Pembayaran</a>';    
+                        } else {
+                            html += '<button type="button" class="btn btn-info" data-toggle="modal" data-target="#modalBuktiPembayaran" onclick="buktiPembayaran(' + dataField + ')">Bukti Pembayaran</button>';        
+                        }
+                        
+    					html += '<a href="<?= base_url() ?>user/riwayat_detail_pemesanan/" onclick="set_session_transaksi('+dataField+')" class="btn btn-info ml-2">Detail Transaksi</a>';
     					return html;
     				}
     			}
@@ -70,9 +75,12 @@
 
     });
     function buktiPembayaran(id) {
-        console.log('<?= base_url() ?>user/get_bukti_pembayaran_by_id'+id)
         $.getJSON('<?= base_url() ?>user/get_bukti_pembayaran_by_id/'+id, (data) => {
             $('#bukti_pembayaran').attr('src', '<?= base_url() ?>uploads/bukti_pembayaran/'+data.bukti_pembayaran);
         })
+    }
+
+    function set_session_transaksi(id_transaksi) {
+        $.get("<?= base_url() ?>user/set_session_transaksi/" + id_transaksi);
     }
 </script>

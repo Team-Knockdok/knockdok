@@ -47,7 +47,7 @@ class Pembayaran extends CI_Controller {
       $this->session->set_flashdata('failed', 'Upload gagal! Silahkan coba lagi');
       redirect('pembayaran');
     }
-    redirect('user/riwayat');
+    redirect('user/riwayat_transaksi');
   }
 
   public function update($id_transaksi)

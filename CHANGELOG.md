@@ -5,7 +5,28 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [Unreleased] - 2020-05-02
+
+### Changed
+* fixing API bug
+
+## [Unreleased] - 2020-04-27
+
+### Added
+* added get_detail_pemesanan() at pesanan_model.php
+* added document ready js function at jadwal_view.php
+* Added set_session_transaksi() js function at riwayat_transaksi_view.php
+* Added set_session_transaksi() function at user.php
+* Added get_data_pemesanan() function at user.php
+* Added get_keluhan() function at user.php
+
+### Changed
+* changed navbar route to riwayat_transaksi
+* changed redirect route in pembayaran.php from riwayat into riwayat_transaksi
+* changed riwayat_detail_pemesanan($id_transaksi) into riwayat_detail_pemesanan() at user.php
+
+### Removed
+* removed get_sudah_transaksi() function at pesanan_model
 
 ## [0.4.1] - 2020-04-25
 

@@ -12,6 +12,12 @@ class User extends CI_Controller {
         $this->load->model('user_model');
     }
 
+    public function set_session_transaksi($id_transaksi)
+    { 
+        $this->session->set_userdata('id_transaksi', $id_transaksi );
+        return;
+    }
+
 
     public function index()
     {
@@ -28,8 +34,6 @@ class User extends CI_Controller {
 
     public function riwayat_transaksi()
     {
-        
-
         if ($this->session->userdata('logged_in')) {
             $data['main_view'] = 'riwayat_transaksi_view';
             $this->load->view('template', $data);
@@ -39,13 +43,10 @@ class User extends CI_Controller {
         }
     }
 
-    public function riwayat_detail_pemesanan($id_transaksi)
+    public function riwayat_detail_pemesanan()
     {
         if ($this->session->userdata('logged_in')) {
-            $this->load->model('pesanan_model');
             $data['main_view'] = 'riwayat_pemesanan_view';
-            $username = $this->session->userdata('username');
-            $data['data_riwayat'] = $this->pesanan_model->get_sudah_transaksi($username);
             $this->load->view('template', $data);
         } else {
             $this->session->set_flashdata('failed', 'session login telah habis, silahkan login kembali!');
@@ -56,6 +57,19 @@ class User extends CI_Controller {
     public function get_riwayat_transaksi()
     {
         echo json_encode($this->user_model->get_riwayat_transaksi());
+    }
+
+    public function get_data_pemesanan()
+    {
+        $this->load->model('pesanan_model');
+        $id_transaksi = $this->session->userdata('id_transaksi');
+        echo json_encode($this->pesanan_model->get_detail_pemesanan($id_transaksi));
+    }
+
+    public function get_keluhan($id_pesanan)
+    {
+        $this->load->model('pesanan_model');
+        echo json_encode($this->pesanan_model->get_keluhan($id_pesanan));
     }
 
     public function get_bukti_pembayaran_by_id($id)
