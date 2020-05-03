@@ -142,6 +142,17 @@ class dokter_model extends CI_Model {
 
   }
 
+  public function search($q)
+  {
+    $query = $this->db
+      ->from('tb_dokter')
+      ->like('nama_dokter', $q)
+      ->or_like('spesialis', $q)
+      ->or_like('alamat_dokter', $q)
+      ->get();
+    return $query->result_array();
+  }
+
 }
 
 ?>

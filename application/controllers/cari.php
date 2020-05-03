@@ -16,6 +16,11 @@ class Cari extends CI_Controller {
       "list_dokter" => $this->dokter_model->get(),
       "list_rs"     => $this->rs_model->get()
     );
+    $keyword = $this->input->get('q');
+    if ($keyword != '') {
+      $data['query']['list_dokter'] = $this->dokter_model->search($keyword);
+      $data['query']['list_rs'] = $this->rs_model->search($keyword);
+    }
     $this->load->view('template', $data);
   }
 

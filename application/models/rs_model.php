@@ -62,6 +62,17 @@ class Rs_model extends CI_Model {
         }
     }
 
+    public function search($q)
+    {
+      $query = $this->db
+        ->from('tb_rs')
+        ->like('nama_rs', $q)
+        ->or_like('alamat_rs', $q)
+        ->get();
+      return $query->result_array();
+    }
+
+
 }
 
 /* End of file rumah_sakit_model.php */

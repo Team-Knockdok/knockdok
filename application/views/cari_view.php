@@ -2,9 +2,9 @@
   <h3 style="color:#579ca1; margin-top: 30px; margin-left: 30px;">Pelelusuran</h3>
   <br><br>
   <!-- Search form -->
-  <form class="form-inline d-flex justify-content-center md-form form-sm mt-0">
+  <form action="<?php echo base_url(); ?>cari" method="get" class="form-inline d-flex justify-content-center md-form form-sm mt-0">
       <button type="submit" class="form-control btn btn-info">Telusuri</button>
-      <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Cari nama dokter atau rumah sakit. Contoh: RS Indah" aria-label="Search">
+      <input class="form-control form-control-sm ml-3 w-75" type="text" name="q" placeholder="Cari nama, spesialis dokter, atau alamat dokter atau rumah sakit. Contoh: Bandung" aria-label="Search">
   </form>
   <br><br>
 
