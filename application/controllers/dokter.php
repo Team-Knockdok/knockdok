@@ -179,17 +179,17 @@ class Dokter extends CI_Controller {
 		$this->form_validation->set_rules('estimasi_durasi', 'Estimasi Durasi', 'required');
 		$this->form_validation->set_rules('id_dokter', 'Dokter', 'required');
 		$this->form_validation->set_rules('id_rs', 'Rumah Sakit', 'required');
+		$this->form_validation->set_rules('biaya', 'Biaya', 'required|numeric|greater_than_equal_to[0]');
 
 		$data = array(
 			'waktu_mulai' 			=> $this->input->post('waktu_mulai'),
-			'estimasi_durasi' 		=> $this->input->post('estimasi_durasi'),
-			'id_dokter' 			=> $this->input->post('id_dokter'),
-			'id_rs' 				=> $this->input->post('id_rs'),
-			'delete_status' 		=> 'false',
-			'tersedia'				=> '1'
+			'estimasi_durasi' 	=> $this->input->post('estimasi_durasi'),
+			'id_dokter' 				=> $this->input->post('id_dokter'),
+			'id_rs' 						=> $this->input->post('id_rs'),
+			'biaya'							=> $this->input->post('biaya')
 		);
 
-		if ($this->form_validation->run() == TRUE) {
+		if ($this->form_validation->run()) {
 			if ($this->dokter_model->add_schedule($data) == TRUE) {
 				// activate this if you have the view to show this notification
                 // $this->session->set_flashdata('success', 'tambah jadwal pemeriksaan berhasil!');
